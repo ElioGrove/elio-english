@@ -79,13 +79,13 @@ npx wrangler secret put DASHSCOPE_API_KEY
 
 ### 千问区域配置
 
-默认配置使用新加坡国际站旧版兼容地址：
+默认配置使用中国内地华北 2（北京）的 DashScope OpenAI 兼容地址：
 
 ```text
-https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+https://dashscope.aliyuncs.com/compatible-mode/v1
 ```
 
-如果你的 API Key 属于中国内地、美国或新加坡 Workspace，请按照[阿里云百炼官方文档](https://help.aliyun.com/zh/model-studio/qwen-api-via-openai-chat-completions)把 `DASHSCOPE_BASE_URL` 改成对应 Workspace endpoint。模型默认使用 `qwen3.8-max`。
+当前配置适用于中国内地的百炼通用 API Key。生产环境也可以按照[阿里云百炼地域与接入域名文档](https://help.aliyun.com/zh/model-studio/regions/)改用北京地域的 Workspace 专属域名。模型默认使用 `qwen3.8-max`。
 
 ## GitHub Actions
 
