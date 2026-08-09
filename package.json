@@ -1,0 +1,32 @@
+{
+  "name": "xiaolin-english",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:worker": "wrangler dev",
+    "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "build:cloudflare": "vite build",
+    "check": "tsc --noEmit && npm run test:sites",
+    "cf:types": "wrangler types",
+    "db:migrate:local": "wrangler d1 migrations apply xiaolin-english --local",
+    "db:migrate:remote": "wrangler d1 migrations apply xiaolin-english --remote",
+    "deploy": "npm run build:cloudflare && wrangler deploy",
+    "preview": "vite preview",
+    "test:sites": "node --test tests/sites-worker.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource/instrument-serif": "5.2.7",
+    "@phosphor-icons/react": "2.1.10",
+    "@vitejs/plugin-react": "5.0.4",
+    "vite": "6.4.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.2.0",
+    "typescript": "5.9.2",
+    "wrangler": "4.119.0"
+  }
+}

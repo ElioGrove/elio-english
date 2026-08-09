@@ -1,0 +1,5 @@
+# Local-only secrets. Copy to .dev.vars; never commit the real file.
+APP_PASSWORD=choose-a-long-private-password
+SESSION_SECRET=generate-at-least-32-random-bytes
+DASHSCOPE_API_KEY=sk-your-key
+
