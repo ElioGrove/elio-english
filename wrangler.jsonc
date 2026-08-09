@@ -14,7 +14,7 @@
     {
       "binding": "DB",
       "database_name": "xiaolin-english",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "f9ec4729-dc30-4427-a771-9ebaf29ede2d",
       "migrations_dir": "migrations"
     }
   ],

@@ -1,4 +1,4 @@
-# 小林英语
+# 晓林英语
 
 一个面向个人长期使用的英语单词学习站。项目按「由易到难」组织 12 本词书，保存每个单词的学习状态，并可用千问按需生成结构化学习卡片。前端、API、静态资源与数据库均部署在 Cloudflare 上。
 
@@ -53,29 +53,25 @@ DASHSCOPE_API_KEY=你的百炼API_KEY
 
 ## Cloudflare 首次部署
 
-1. 登录 Cloudflare，并创建 D1 数据库：
+项目已绑定 D1 数据库 `f9ec4729-dc30-4427-a771-9ebaf29ede2d`。先登录 Cloudflare、初始化远程数据库并部署：
 
-   ```bash
-   npx wrangler login
-   npx wrangler d1 create xiaolin-english
-   ```
+```bash
+npx wrangler login
+npm run db:migrate:remote
+npm run deploy
+```
 
-2. 将命令返回的 `database_id` 写入 `wrangler.jsonc`。
+部署完成后配置三个加密 Secret：
 
-3. 配置三个加密 Secret：
+```bash
+npx wrangler secret put APP_PASSWORD
+npx wrangler secret put SESSION_SECRET
+npx wrangler secret put DASHSCOPE_API_KEY
+```
 
-   ```bash
-   npx wrangler secret put APP_PASSWORD
-   npx wrangler secret put SESSION_SECRET
-   npx wrangler secret put DASHSCOPE_API_KEY
-   ```
+也可以在 Cloudflare 后台的 Worker 设置中添加同名 Secret。`SESSION_SECRET` 应为至少 32 位的随机字符串。Secret 未配置完成前，生产站点会安全地保持关闭，不会进入演示模式。
 
-4. 初始化远程数据库并部署：
-
-   ```bash
-   npm run db:migrate:remote
-   npm run deploy
-   ```
+配置完成后无需重新构建代码；刷新网站即可登录。Wrangler 后续部署不会删除已配置的加密 Secret。
 
 `wrangler.jsonc` 已将 `english.thus.chat` 配置为自定义域名。部署账号需要拥有该域名所在 Cloudflare Zone 的权限。
 

@@ -176,6 +176,17 @@ function checkOrigin(request: Request): boolean {
   return !origin || origin === new URL(request.url).origin;
 }
 
+function authSecretsConfigured(env: Cloudflare.Env): boolean {
+  return typeof env.APP_PASSWORD === "string"
+    && env.APP_PASSWORD.length > 0
+    && typeof env.SESSION_SECRET === "string"
+    && env.SESSION_SECRET.length >= 32;
+}
+
+function qwenSecretConfigured(env: Cloudflare.Env): boolean {
+  return typeof env.DASHSCOPE_API_KEY === "string" && env.DASHSCOPE_API_KEY.length > 0;
+}
+
 async function handleLogin(request: Request, env: Cloudflare.Env): Promise<Response> {
   if (!checkOrigin(request)) return apiError("请求来源无效", 403);
   const key = await clientKey(request);
@@ -536,6 +547,7 @@ async function handleApi(request: Request, env: Cloudflare.Env): Promise<Respons
   const method = request.method.toUpperCase();
 
   if (url.pathname === "/api/health" && method === "GET") return json({ ok: true });
+  if (!authSecretsConfigured(env)) return apiError("站点尚未完成安全配置", 503);
   if (url.pathname === "/api/auth/login" && method === "POST") return handleLogin(request, env);
   if (url.pathname === "/api/auth/logout" && method === "POST") return logoutResponse(request);
 
@@ -553,6 +565,7 @@ async function handleApi(request: Request, env: Cloudflare.Env): Promise<Respons
   const generateMatch = url.pathname.match(/^\/api\/words\/(\d+)\/generate$/);
   if (generateMatch && method === "POST") {
     if (!checkOrigin(request)) return apiError("请求来源无效", 403);
+    if (!qwenSecretConfigured(env)) return apiError("千问 API 尚未配置", 503);
     let force = false;
     try {
       const body = await readJsonObject(request);

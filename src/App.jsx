@@ -52,7 +52,7 @@ function Login({ onSuccess }) {
 
   return (
     <main className="login-page">
-      <div className="login-brand"><Asterisk weight="light" /><span>沉浸词阅</span></div>
+      <div className="login-brand"><Asterisk weight="light" /><span>晓林英语</span></div>
       <form className="login-form" onSubmit={submit}>
         <p className="eyebrow">PRIVATE READING ROOM</p>
         <h1>继续你的<br />词汇旅程。</h1>
@@ -67,6 +67,20 @@ function Login({ onSuccess }) {
         {error && <p className="form-error"><WarningCircle />{error}</p>}
       </form>
       <p className="login-footnote">仅供个人使用 · 学习进度安全保存在 Cloudflare D1</p>
+    </main>
+  );
+}
+
+function SetupUnavailable() {
+  return (
+    <main className="login-page">
+      <div className="login-brand"><Asterisk weight="light" /><span>晓林英语</span></div>
+      <div className="login-form">
+        <p className="eyebrow">DEPLOYMENT READY</p>
+        <h1>站点已部署，<br />等待安全配置。</h1>
+        <p className="login-copy">管理员完成访问密码与会话密钥配置后，这里会自动开放登录。</p>
+      </div>
+      <p className="login-footnote">安全配置未完成 · 当前不会展示学习数据</p>
     </main>
   );
 }
@@ -92,7 +106,7 @@ function AppHeader({ books, currentBook, onBookChange, word, search, setSearch, 
   const percentage = Math.min(100, (progress / total) * 100);
   return (
     <header className="app-header">
-      <div className="wordmark"><Asterisk weight="light" /><span>沉浸词阅</span></div>
+      <div className="wordmark"><Asterisk weight="light" /><span>晓林英语</span></div>
       <label className="book-picker">
         <BookOpen weight="light" />
         <span>当前词书：</span>
@@ -436,14 +450,19 @@ export function App() {
       const session = await api("/api/session");
       setState(session.authenticated ? "app" : "login");
     } catch {
-      setDemoMode(true);
-      setState("app");
+      if (import.meta.env.DEV) {
+        setDemoMode(true);
+        setState("app");
+      } else {
+        setState("setup");
+      }
     }
   }
 
   useEffect(() => { checkSession(); }, []);
 
-  if (state === "loading") return <div className="loading-screen"><Asterisk /><span>正在打开词阅</span></div>;
+  if (state === "loading") return <div className="loading-screen"><Asterisk /><span>正在打开晓林英语</span></div>;
+  if (state === "setup") return <SetupUnavailable />;
   if (state === "login") return <Login onSuccess={() => setState("app")} />;
   return <StudyApp demoMode={demoMode} onUnauthorized={() => setState("login")} />;
 }
