@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourceRoot = path.resolve(process.argv[2] || "");
 const bookDir = path.join(sourceRoot, "book");
-const output = path.join(root, "migrations", "0002_vocabulary.sql");
+const output = path.join(root, "data", "vocabulary.sql");
 
 if (!process.argv[2]) {
   console.error("Usage: node scripts/build-vocabulary-migration.mjs /path/to/kajweb/dict");
@@ -87,11 +87,10 @@ for (const plan of plans) {
 
 const lines = [
   "PRAGMA foreign_keys = ON;",
-  "BEGIN TRANSACTION;",
 ];
 
 for (const [index, book] of bookRows.entries()) {
-  lines.push(`INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (${index + 1}, ${sql(book.slug)}, ${sql(book.title)}, ${sql(book.description)}, ${book.difficulty}, ${book.count}, ${sql(book.sourceIds.join(","))});`);
+  lines.push(`INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (${index + 1}, ${sql(book.slug)}, ${sql(book.title)}, ${sql(book.description)}, ${book.difficulty}, ${book.count}, ${sql(book.sourceIds.join(","))});`);
 }
 
 const wordRows = [...words.values()];
@@ -99,7 +98,7 @@ for (let start = 0; start < wordRows.length; start += 150) {
   const values = wordRows.slice(start, start + 150).map((word) =>
     `(${word.id},${sql(word.headword)},${sql(word.normalized)},${sql(word.phonetic)},${sql(word.pos)},${sql(word.meaning)})`
   );
-  lines.push(`INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES\n${values.join(",\n")};`);
+  lines.push(`INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES\n${values.join(",\n")};`);
 }
 
 for (const [bookIndex, book] of bookRows.entries()) {
@@ -107,11 +106,10 @@ for (const [bookIndex, book] of bookRows.entries()) {
     const values = book.associations.slice(start, start + 200).map(({ wordId, position }) =>
       `(${bookIndex + 1},${wordId},${position})`
     );
-    lines.push(`INSERT INTO book_words(book_id, word_id, position) VALUES\n${values.join(",\n")};`);
+    lines.push(`INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES\n${values.join(",\n")};`);
   }
 }
 
-lines.push("COMMIT;");
 mkdirSync(path.dirname(output), { recursive: true });
 writeFileSync(output, lines.join("\n\n") + "\n");
 
@@ -120,4 +118,3 @@ console.log(JSON.stringify({
   books: bookRows.map(({ slug, title, count }) => ({ slug, title, count })),
   uniqueWords: wordRows.length,
 }, null, 2));
-

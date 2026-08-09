@@ -36,6 +36,7 @@
 npm install
 cp .dev.vars.example .dev.vars
 npm run db:migrate:local
+npm run db:seed:local
 npm run dev:worker
 ```
 
@@ -58,6 +59,7 @@ DASHSCOPE_API_KEY=你的百炼API_KEY
 ```bash
 npx wrangler login
 npm run db:migrate:remote
+npm run db:seed:remote
 npm run deploy
 ```
 
@@ -87,7 +89,7 @@ https://dashscope-intl.aliyuncs.com/compatible-mode/v1
 
 ## GitHub Actions
 
-`.github/workflows/deploy.yml` 提供手动部署工作流。需要在 GitHub 仓库 Secrets 中配置：
+`.github/workflows/deploy.yml` 提供手动部署工作流。首次初始化新数据库时勾选 `seed_database`；后续发布保持关闭即可。需要在 GitHub 仓库 Secrets 中配置：
 
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`

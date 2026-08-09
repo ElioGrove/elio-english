@@ -1,32 +1,30 @@
 PRAGMA foreign_keys = ON;
 
-BEGIN TRANSACTION;
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (1, 'foundation', '小学基础', '从文具、颜色、家庭与日常表达开始', 1, 819, 'PEPXiaoXue3_1,PEPXiaoXue3_2,PEPXiaoXue4_1,PEPXiaoXue4_2,PEPXiaoXue5_1,PEPXiaoXue5_2,PEPXiaoXue6_1,PEPXiaoXue6_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (1, 'foundation', '小学基础', '从文具、颜色、家庭与日常表达开始', 1, 819, 'PEPXiaoXue3_1,PEPXiaoXue3_2,PEPXiaoXue4_1,PEPXiaoXue4_2,PEPXiaoXue5_1,PEPXiaoXue5_2,PEPXiaoXue6_1,PEPXiaoXue6_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (2, 'middle-school', '初中核心', '常用基础词与学校生活表达', 2, 1418, 'ChuZhongluan_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (2, 'middle-school', '初中核心', '常用基础词与学校生活表达', 2, 1418, 'ChuZhongluan_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (3, 'high-school', '高中核心', '阅读、写作与高考高频词', 3, 3665, 'GaoZhongluan_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (3, 'high-school', '高中核心', '阅读、写作与高考高频词', 3, 3665, 'GaoZhongluan_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (4, 'cet4', 'CET-4', '大学英语四级核心词汇', 4, 3739, 'CET4luan_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (4, 'cet4', 'CET-4', '大学英语四级核心词汇', 4, 3739, 'CET4luan_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (5, 'cet6', 'CET-6', '大学英语六级进阶词汇', 5, 2078, 'CET6_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (5, 'cet6', 'CET-6', '大学英语六级进阶词汇', 5, 2078, 'CET6_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (6, 'bec', 'BEC 商务', '工作、商业与沟通场景词汇', 6, 2753, 'BEC_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (6, 'bec', 'BEC 商务', '工作、商业与沟通场景词汇', 6, 2753, 'BEC_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (7, 'postgraduate', '考研', '考研英语阅读与写作词汇', 7, 4533, 'KaoYan_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (7, 'postgraduate', '考研', '考研英语阅读与写作词汇', 7, 4533, 'KaoYan_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (8, 'ielts', 'IELTS', '雅思听说读写高频词汇', 8, 3427, 'IELTSluan_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (8, 'ielts', 'IELTS', '雅思听说读写高频词汇', 8, 3427, 'IELTSluan_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (9, 'toefl', 'TOEFL', '托福学术场景与校园词汇', 9, 9212, 'TOEFL_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (9, 'toefl', 'TOEFL', '托福学术场景与校园词汇', 9, 9212, 'TOEFL_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (10, 'sat', 'SAT', 'SAT 阅读与论证词汇', 10, 4423, 'SAT_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (10, 'sat', 'SAT', 'SAT 阅读与论证词汇', 10, 4423, 'SAT_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (11, 'gmat', 'GMAT', '商科逻辑与分析写作词汇', 11, 3254, 'GMATluan_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (11, 'gmat', 'GMAT', '商科逻辑与分析写作词汇', 11, 3254, 'GMATluan_2');
+INSERT OR IGNORE INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (12, 'gre', 'GRE', '高难度学术与精确表达词汇', 12, 7199, 'GRE_2');
 
-INSERT INTO books(id, slug, title, description, difficulty, word_count, source_id) VALUES (12, 'gre', 'GRE', '高难度学术与精确表达词汇', 12, 7199, 'GRE_2');
-
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (1,'ruler','ruler','''rulɚ',NULL,'尺子'),
 (2,'pencil','pencil','''pɛnsl',NULL,'铅笔'),
 (3,'eraser','eraser','ɪ''resɚ',NULL,'橡皮'),
@@ -178,7 +176,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (149,'clean','clean','klin',NULL,'打扫'),
 (150,'help','help','hɛlp',NULL,'帮助');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (151,'schoolbag','schoolbag','ˈskulˌbæɡ',NULL,'书包'),
 (152,'maths book','maths book',NULL,NULL,'数学书'),
 (153,'English book','english book',NULL,NULL,'英语书'),
@@ -330,7 +328,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (299,'pack','pack','pæk',NULL,'收拾'),
 (300,'wait','wait','wet',NULL,'等待');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (301,'glove','glove','ɡlʌv',NULL,'手套'),
 (302,'scarf','scarf','skɑrf',NULL,'围巾'),
 (303,'umbrella','umbrella','ʌm''brɛlə',NULL,'伞'),
@@ -482,7 +480,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (449,'have...class','have...class',NULL,NULL,'上⋯⋯课'),
 (450,'exercise','exercise','''ɛksɚsaɪz',NULL,'活动');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (451,'do morning exercise','do morning exercise',NULL,NULL,'做早操'),
 (452,'eat dinner','eat dinner',NULL,NULL,'吃晚饭'),
 (453,'clean my room','clean my room',NULL,NULL,'打扫我的房间'),
@@ -634,7 +632,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (599,'post office','post office','ˈpost ɔfɪs',NULL,'邮局'),
 (600,'bookstore','bookstore','bʊkstɔr',NULL,'书店');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (601,'cinema','cinema','''sɪnəmə',NULL,'电影院'),
 (602,'hospital','hospital','''hɑspɪtl',NULL,'医院'),
 (603,'crossing','crossing','''krɔsɪŋ',NULL,'十字路口'),
@@ -786,7 +784,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (749,'had a cold','had a cold',NULL,NULL,'感冒'),
 (750,'slept','slept','slɛpt',NULL,'睡觉');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (751,'saw','saw','sɔ',NULL,'看'),
 (752,'yesterday','yesterday','ˈjɛstɚdɪ;-de',NULL,'昨天'),
 (753,'before','before','bɪ''fɔr',NULL,'在⋯⋯之前'),
@@ -938,7 +936,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (899,'where','where','wɛr','adv','在哪里'),
 (900,'smooth','smooth','smʊð','adj','顺利的；光滑的；平稳的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (901,'airplane','airplane','ˈerpleɪn','n','飞机'),
 (902,'choice','choice','tʃɔɪs','n','选择；选择权；精选品'),
 (903,'death','death','dɛθ','n','死；死亡；死神；毁灭'),
@@ -1090,7 +1088,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (1049,'news','news','nuz','n','新闻，消息；新闻报导'),
 (1050,'pond','pond','pɑnd','vt','筑成池塘');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (1051,'vehicle','vehicle','''viːɪkl','n','[车辆] 车辆；工具；交通工具；运载工具；传播媒介；媒介物'),
 (1052,'weight','weight','wet','n','重量，重力；负担；砝码；重要性'),
 (1053,'sausage','sausage','''sɔsɪdʒ','n','香肠；腊肠；装香肠的碎肉'),
@@ -1242,7 +1240,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (1199,'ham','ham','hæm','n','火腿；业余无线电爱好者；蹩脚演员'),
 (1200,'comfortable','comfortable','''kʌmftəbl','adj','舒适的，舒服的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (1201,'silence','silence','''saɪləns','n','沉默；寂静；缄默；不谈；无声状态'),
 (1202,'deaf','deaf','dɛf','adj','聋的'),
 (1203,'circle','circle','''sɝkl','n','循环，周期；圆；圈子；圆形物'),
@@ -1394,7 +1392,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (1349,'lively','lively','''laɪvli','adj','活泼的；生动的；真实的；生气勃勃的'),
 (1350,'rapid','rapid','''ræpɪd','adj','迅速的，急促的；飞快的；险峻的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (1351,'frog','frog','frɔɡ','n','青蛙；[铁路] 辙叉；饰扣'),
 (1352,'control','control','kən''trol','n','控制；管理；抑制；操纵装置'),
 (1353,'toothache','toothache','''tuθek','n','[口腔] 牙痛'),
@@ -1546,7 +1544,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (1499,'term','term','tɝm','n','术语；学期；期限；条款；(代数式等的)项'),
 (1500,'mirror','mirror','''mɪrɚ','n','镜子；真实的写照；榜样');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (1501,'condition','condition','kən''dɪʃən','n','条件；情况；环境；身份'),
 (1502,'position','position','pə''zɪʃən','n','位置，方位；职位，工作；姿态；站位'),
 (1503,'rule','rule','rul','v','统治；管辖；裁定'),
@@ -1698,7 +1696,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (1649,'land','land','lænd','n','国土；陆地；地面'),
 (1650,'western','western','''wɛstɚn','adj','西方的，西部的；有西方特征的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (1651,'speech','speech','spitʃ','n','演讲；讲话；[语] 语音；演说'),
 (1652,'birth','birth','bɝθ','n','出生；血统，出身；起源'),
 (1653,'excellent','excellent','''ɛksələnt','adj','卓越的；极好的；杰出的'),
@@ -1850,7 +1848,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (1799,'hardship','hardship','''hɑrdʃɪp','n','困苦；苦难；艰难险阻'),
 (1800,'postpone','postpone','po''spon','v','使…延期；把…放在次要地位；把…放在后面');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (1801,'physicist','physicist','''fɪzɪsɪst','n','物理学家；唯物论者'),
 (1802,'lantern','lantern','''læntɚn','n','灯笼；提灯；灯笼式天窗'),
 (1803,'panic','panic','''pænɪk','n','恐慌，惊慌；大恐慌'),
@@ -2002,7 +2000,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (1949,'slice','slice','slaɪs','n','薄片；部分；菜刀，火铲'),
 (1950,'favour','favour','ˈfevɚ','n','偏爱；赞同；善行');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (1951,'Arctic','arctic','''ɑrktɪk','adj','北极的；极寒的'),
 (1952,'pulse','pulse','pʌls','n','[电子] 脉冲；脉搏'),
 (1953,'tune','tune','tun','n','曲调；和谐；心情'),
@@ -2154,7 +2152,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (2099,'explicit','explicit','ɪk''splɪsɪt','adj','明确的；清楚的；直率的；详述的'),
 (2100,'lightning','lightning','''laɪtnɪŋ','adj','闪电的；快速的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (2101,'jog','jog','dʒɑɡ','v','慢跑；轻推；蹒跚行进；使颠簸'),
 (2102,'wooden','wooden','''wʊdn','adj','木制的；僵硬的，呆板的'),
 (2103,'accessible','accessible','ək''sɛsəbl','adj','易接近的；可进入的；可理解的'),
@@ -2306,7 +2304,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (2249,'entire','entire','ɪn''taɪɚ','adj','全部的，整个的；全体的'),
 (2250,'bare','bare','bɛr','adj','空的；赤裸的，无遮蔽的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (2251,'firewood','firewood','''faɪɚwʊd','n','柴火；木柴'),
 (2252,'Iceland','iceland','''aislənd','n','冰岛（欧洲岛名，在大西洋北部，近北极圈）'),
 (2253,'ecology','ecology','ɪ''kɑlədʒi','n','生态学；社会生态学'),
@@ -2458,7 +2456,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (2399,'zipper','zipper','ˈzɪpə','n','拉链'),
 (2400,'permanent','permanent','''pɝmənənt','adj','永久的，永恒的；不变的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (2401,'honour','honour','''ɔnə','n','荣誉；尊敬；勋章'),
 (2402,'political','political','pə''lɪtɪkl','adj','政治的；党派的'),
 (2403,'organise','organise','''ɔrgə,naɪz','v','组织起来；组织工会'),
@@ -2610,7 +2608,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (2549,'dam','dam','dæm','v','控制；筑坝'),
 (2550,'fright','fright','fraɪt','n','惊吓；惊骇');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (2551,'version','version','''vɝʒn','n','版本；译文；倒转术'),
 (2552,'disabled','disabled','dɪs''ebld','adj','残废的，有缺陷的'),
 (2553,'heel','heel','hil','n','脚后跟；踵'),
@@ -2762,7 +2760,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (2699,'antique','antique','æn''tik','adj','古老的，年代久远的；过时的，古董的；古风的，古式的'),
 (2700,'ripe','ripe','raɪp','adj','熟的，成熟的；时机成熟的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (2701,'peasant','peasant','''pɛznt','n','农民；乡下人'),
 (2702,'athletics','athletics','æθ''lɛtɪks','n','竞技；体育运动；田径运动'),
 (2703,'leak','leak','lik','n','泄漏；漏洞，裂缝'),
@@ -2914,7 +2912,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (2849,'lung','lung','lʌŋ','n','肺；呼吸器'),
 (2850,'fried','fried','fraid','adj','油炸的，油煎的；喝醉了的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (2851,'reviewer','reviewer','rɪ''vjuɚ','n','评论者，评论家'),
 (2852,'file','file','faɪl','n','文件；档案；文件夹；锉刀'),
 (2853,'liberty','liberty','''lɪbɚti','n','自由；许可；冒失'),
@@ -3066,7 +3064,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (2999,'Egyptian','egyptian','ɪ''dʒɪpʃ(ə)n','adj','埃及的；埃及人的'),
 (3000,'reform','reform','rɪ''fɔrm','n','改革，改良；改正');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (3001,'bench','bench','bɛntʃ','n','长凳；工作台；替补队员'),
 (3002,'vest','vest','vest','n','背心；汗衫'),
 (3003,'weakness','weakness','''wiknəs','n','弱点；软弱；嗜好'),
@@ -3218,7 +3216,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (3149,'ride','ride','raɪd','v','骑马；乘车；依靠；漂浮'),
 (3150,'circulate','circulate','''sɝkjəlet','v','传播，流传；循环；流通');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (3151,'nursery','nursery','''nɝsəri','n','苗圃；托儿所；温床'),
 (3152,'regards','regards','ri''ga:dz','n','致意，问候'),
 (3153,'sceptical','sceptical','''skeptikəl','adj','怀疑的；怀疑论的；习惯怀疑的'),
@@ -3370,7 +3368,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (3299,'instruct','instruct','ɪn''strʌkt','v','指导；通知；命令；教授'),
 (3300,'amusement','amusement','ə''mjuzmənt','n','消遣，娱乐；乐趣');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (3301,'afterward','afterward','ˈæftərwərd','adv','以后，后来'),
 (3302,'defense','defense','dɪ''fɛns','n','防卫，防护；防御措施；防守'),
 (3303,'fellow','fellow','''fɛlo','n','家伙；朋友；同事；会员'),
@@ -3522,7 +3520,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (3449,'catch','catch','kætʃ','v','赶上；抓住；感染；了解'),
 (3450,'consult','consult','kən''sʌlt','v','查阅；商量；向…请教');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (3451,'preserve','preserve','prɪ''zɝv','v','保存；保护；维持；腌；禁猎'),
 (3452,'numb','numb','nʌm','v','使麻木；使发愣；使失去感觉'),
 (3453,'occur','occur','ə''kɝ','v','发生；出现；存在'),
@@ -3674,7 +3672,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (3599,'rude','rude','rud','adj','粗鲁的；无礼的；狂暴的；未开化的'),
 (3600,'nursing','nursing','''nɝsɪŋ','n','护理；看护；养育');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (3601,'compensate','compensate','''kɑmpɛnset','v','补偿，赔偿；抵消'),
 (3602,'origin','origin','''ɔrɪdʒɪn','n','起源；原点；出身；开端'),
 (3603,'distinction','distinction','dɪ''stɪŋkʃən','n','区别；差别；特性；荣誉、勋章'),
@@ -3826,7 +3824,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (3749,'embarrass','embarrass','ɪm''bærəs','v','使局促不安；使困窘；阻碍'),
 (3750,'bat','bat','bæt','n','蝙蝠；球棒；球拍；批处理文件的扩展名');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (3751,'reference','reference','''rɛfrəns','n','参考，参照；涉及，提及；参考书目；介绍信；证明书'),
 (3752,'beer','beer','bɪr','n','啤酒'),
 (3753,'eggplant','eggplant','''ɛɡplænt','n','茄子'),
@@ -3978,7 +3976,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (3899,'Arabic','arabic','ˈærəbɪk','adj','阿拉伯的；阿拉伯人的'),
 (3900,'bone','bone','bon','n','骨；骨骼');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (3901,'bishop','bishop','''bɪʃəp','n','（基督教的）主教；（国际象棋的）象'),
 (3902,'refusal','refusal','rɪ''fjuzl','n','拒绝；优先取舍权；推却；取舍权'),
 (3903,'eager','eager','''igɚ','adj','渴望的；热切的；热心的'),
@@ -4130,7 +4128,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (4049,'jewish','jewish','''dʒʊɪʃ','adj','犹太人的'),
 (4050,'current','current','kɝ​ənt','adj','当前的；通用的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (4051,'sustain','sustain','sə''sten','v','支撑；忍受；供养'),
 (4052,'enormous','enormous','ɪ''nɔrməs','adj','巨大的，庞大的'),
 (4053,'bullet','bullet','''bʊlɪt','n','枪弹，子弹，弹丸'),
@@ -4282,7 +4280,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (4199,'greatly','greatly','''ɡretli','adv','大大地，非常'),
 (4200,'quotation','quotation','kwo''teʃən','n','引用；引文；报价单');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (4201,'border','border',NULL,'n','边，边缘；边界'),
 (4202,'panel','panel','''pænl','n','专门小组；面，板'),
 (4203,'wrap','wrap','ræp','v','裹，包，捆'),
@@ -4434,7 +4432,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (4349,'discipline','discipline','''dɪsəplɪn','n','纪律；训练'),
 (4350,'workshop','workshop','''wɝkʃɑp','n','车间，工场；创作室');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (4351,'listener','listener','''lɪsənɚ','n','听众之一；听者'),
 (4352,'generate','generate','''dʒɛnəret','v','发生；引起'),
 (4353,'fertilizer','fertilizer','''fɝtəlaɪzɚ','n','肥料'),
@@ -4586,7 +4584,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (4499,'county','county','''kaʊnti','n','英国的郡，美国的县'),
 (4500,'bore','bore','bɔr','v','使厌烦；钻，挖');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (4501,'radius','radius','''redɪəs','n','半径'),
 (4502,'nuisance','nuisance','''nusns','n','讨厌的人（东西）'),
 (4503,'accordance','accordance','ə''kɔrdns','n','按照某事物'),
@@ -4738,7 +4736,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (4649,'portrait','portrait','''pɔrtrɪt','n','肖像，画像'),
 (4650,'derive','derive','dɪ''raɪv','v','取得；起源');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (4651,'partial','partial','''pɑrʃəl','adj','部分的；不公平的'),
 (4652,'yearly','yearly','''jɪrli','adj&adv','每年的'),
 (4653,'cord','cord','kɔrd','n','细绳，粗线，索'),
@@ -4890,7 +4888,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (4799,'rack','rack','ræk','n','搁物架；行李架'),
 (4800,'lace','lace','les','n','鞋带，系带；花边');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (4801,'jolly','jolly','''dʒɑli','adj','快活的；令人高兴的'),
 (4802,'ocean','ocean',NULL,'n','海洋；洋'),
 (4803,'lord','lord','lɔrd','n','贵族；上帝'),
@@ -5042,7 +5040,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (4949,'blast','blast','blæst','n','爆炸，冲击波'),
 (4950,'doubtless','doubtless','''daʊtləs','adv','无疑地；很可能');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (4951,'cloak','cloak','klok','n','斗篷；覆盖（物）'),
 (4952,'comprehensive','comprehensive','ˌkɑːmprɪˈhensɪv','adj','广泛的'),
 (4953,'mistress','mistress','''mɪstrəs','n','女主；夫人'),
@@ -5194,7 +5192,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (5099,'identify','identify','aɪ''dɛntɪfaɪ','v','认出，识别，鉴定'),
 (5100,'volume','volume','''vɑljum','n','音量；容积；卷，册');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (5101,'bull','bull','bʊl','n','公牛；雄的象'),
 (5102,'criticize','criticize','''krɪtə''saɪz','v','批评；非难；评论'),
 (5103,'perceive','perceive','pɚ''siv','v','理解；察觉，发觉'),
@@ -5346,7 +5344,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (5249,'perimeter','perimeter','pə''rɪmɪtɚ','n','周（边）；周长'),
 (5250,'responsible','responsible','rɪ''spɑnsəbl','adj','可靠的；责任重大的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (5251,'species','species','''spiʃiz','n','种，物种；种类'),
 (5252,'hearty','hearty','''hɑrti','adj','热情友好的；丰盛的'),
 (5253,'neutron','neutron','''nʊtrɑn','n','中子'),
@@ -5498,7 +5496,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (5399,'compression','compression','kəm''prɛʃən','n','压缩，压紧，浓缩'),
 (5400,'squash','squash','skwɔʃ','v','压碎');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (5401,'overwhelming','overwhelming',',ovɚ''wɛlmɪŋ','adj','压倒的，势不可挡的'),
 (5402,'overwhelm','overwhelm',',ovɚ''wɛlm','v','使（某人）感到不能自持，使不知所措；压倒，击败'),
 (5403,'circulation','circulation',',sɝkjə''leʃən','n','血液循环；（资料、货币等）流通'),
@@ -5650,7 +5648,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (5549,'solidarity','solidarity',',sɑlɪ''dærəti','n','团结；休戚相关'),
 (5550,'regiment','regiment','''rɛdʒɪmənt','n','团，军团；一大群');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (5551,'bandit','bandit','''bændɪt','n','土匪，盗匪，歹徒'),
 (5552,'bald','bald','bɔld','adj','秃头的；无毛的'),
 (5553,'projector','projector','prə''dʒɛktɚ','n','投影仪；探照灯'),
@@ -5802,7 +5800,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (5699,'kidney','kidney','''kɪdni','n','肾，腰子'),
 (5700,'censor','censor','''sɛnsɚ','v','审查，检查');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (5701,'shrine','shrine','ʃraɪn','n','神殿，神龛，圣祠'),
 (5702,'divine','divine','dɪ''vaɪn','adj','神的；敬神的'),
 (5703,'deliberate','deliberate','dɪ''lɪbərət','adj','深思熟虑的；审慎的'),
@@ -5954,7 +5952,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (5849,'refugee','refugee','''rɛfjʊdʒi','n','难民，流亡者'),
 (5850,'pumpkin','pumpkin','''pʌmpkɪn','n','南瓜');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (5851,'polar','polar','''polɚ','adj','南（北）极的；极性的'),
 (5852,'masculine','masculine','''mæskjəlɪn','adj','男性的'),
 (5853,'baron','baron','''bærən','n','男爵；贵族；巨商'),
@@ -6106,7 +6104,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (5999,'dwell','dwell','dwɛl','v','居住；凝思，细想'),
 (6000,'induction','induction','ɪn''dʌkʃən','n','就职；归纳推理');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (6001,'Christ','christ','kraɪst','n','救世主（耶稣基督）'),
 (6002,'symposium','symposium','sɪm''pozɪəm','n','座谈会'),
 (6003,'whoever','whoever','hʊ''ɛvɚ','pron','究竟是谁'),
@@ -6258,7 +6256,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (6149,'bureaucracy','bureaucracy','bjʊ''rɑkrəsi','n','官僚主义；官僚机构'),
 (6150,'monster','monster','''mɑnstɚ','n','怪物；畸形的动植物');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (6151,'client','client','''klaɪənt','n','顾客；诉讼委托人'),
 (6152,'obstinate','obstinate','''ɑbstɪnət','adj','固执的；顽强的'),
 (6153,'inherent','inherent','ɪn''hɪrənt','adj','固有的，生来的'),
@@ -6410,7 +6408,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (6299,'attorney','attorney','ə''tɝni','n','代理人；辩护律师'),
 (6300,'deputy','deputy','''dɛpjuti','n','代理人');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (6301,'delegate','delegate','ˈdɛləgɪt; (for v.,) ˈdɛləˌgeɪt','n','代表，委员，特派员'),
 (6302,'gorilla','gorilla','ɡə''rɪlə','n','大猩猩'),
 (6303,'magnitude','magnitude','''mæɡnɪtud','n','重大；星等'),
@@ -6562,7 +6560,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (6449,'leopard','leopard','''lɛpɚd','n','豹'),
 (6450,'grumble','grumble','''ɡrʌmbl','v','抱怨，发牢骚');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (6451,'vengeance','vengeance','''vɛndʒəns','n','报复，报仇，复仇'),
 (6452,'fortress','fortress','''fɔrtrəs','n','堡垒，要塞'),
 (6453,'assurance','assurance','ə''ʃʊrəns','n','保证'),
@@ -6714,7 +6712,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (6599,'vastly','vastly','ˈvæstli','adv','极大地；广大地；深远地'),
 (6600,'undercut','undercut',',ʌndɚ''kʌt','v','廉价出售；较便宜的工资工作；从下边削球');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (6601,'decipher','decipher','dɪ''saɪfɚ','n','密电译文'),
 (6602,'lucrative','lucrative','''lukrətɪv','adj','有利可图的，赚钱的；合算的'),
 (6603,'disequilibrium','disequilibrium',',dɪs,ikwɪ''lɪbrɪəm','n','不均衡；不安定；失调'),
@@ -6866,7 +6864,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (6749,'debit','debit','''dɛbɪt','v','记入借方，登入借方'),
 (6750,'refurbishment','refurbishment','rɪ''fɝbɪʃmənt','n','整修；翻新；重新磨亮');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (6751,'differentiation','differentiation',',dɪfə,rɛnʃi''eʃən','n','变异，[生物] 分化；区别'),
 (6752,'underinsured','underinsured',',ʌndərɪn''ʃʊrd','adj','投保额低于实际价值的'),
 (6753,'stagnation','stagnation','stæg''neʃən','n','停滞；滞止'),
@@ -7018,7 +7016,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (6899,'haulage','haulage','''hɔlɪdʒ','n','拖运；拖曳；运费'),
 (6900,'allay','allay','ə''le','v','减轻；使缓和；使平静');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (6901,'converge','converge','kən''vɝdʒ','v','使汇聚'),
 (6902,'bodywork','bodywork','''bɑdɪwɝk','n','车体；车身制造'),
 (6903,'merge','merge','mɝdʒ','v','合并；使合并；吞没'),
@@ -7170,7 +7168,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (7049,'dismantle','dismantle','dɪs''mæntl','v','拆除；取消；解散；除掉…的覆盖物'),
 (7050,'outweigh','outweigh','''aʊt''we','v','比…重（在重量上）；比…重要；比…有价值');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (7051,'endeavour','endeavour','ɪndɛvəʳ','n','尽力，竭力'),
 (7052,'advancement','advancement','əd''vænsmənt','n','前进，进步；提升'),
 (7053,'regulatory','regulatory','''reɡjulətəri','adj','管理的；控制的；调整的'),
@@ -7322,7 +7320,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (7199,'supplier','supplier','sə''plaɪɚ','n','供应厂商，供应国；供应者'),
 (7200,'template','template','''tɛmplet','n','模板，样板');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (7201,'pitfall','pitfall','''pɪt''fɔl','n','陷阱，圈套；缺陷；诱惑'),
 (7202,'inconsiderate','inconsiderate',',ɪnkən''sɪdərət','adj','轻率的；不顾别人的；无谋得'),
 (7203,'provable','provable','''pru:vəbl','adj','可证明的；可以查清的'),
@@ -7474,7 +7472,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (7349,'flavor','flavor','''flevɚ','n','情味，风味；香料；滋味'),
 (7350,'newsagent','newsagent','''nʊz''edʒənt','n','报刊经销商');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (7351,'sanction','sanction','''sæŋkʃən','n','制裁，处罚；认可；支持'),
 (7352,'interim','interim','''ɪntərɪm','adj','临时的，暂时的；中间的；间歇的'),
 (7353,'billboard','billboard','''bɪlbɔrd','n','广告牌；布告板'),
@@ -7626,7 +7624,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (7499,'mastermind','mastermind','''mæstəmaɪnd','v','策划'),
 (7500,'logo','logo','''loɡo','n','商标，徽标；标识语');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (7501,'proprietary','proprietary','prə''praɪətɛri','n','所有权；所有人'),
 (7502,'shirk','shirk','ʃə:k','v','逃避'),
 (7503,'functional','functional','''fʌŋkʃənl','adj','功能的'),
@@ -7778,7 +7776,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (7649,'degenerate','degenerate','dɪ''dʒɛnəret','v','使退化；恶化'),
 (7650,'aesthetic','aesthetic','ɛs''θɛtɪk','adj','美的；美学的；审美的，具有审美趣味的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (7651,'medieval','medieval',',midɪ''ivəl','adj','中世纪的；原始的；仿中世纪的；老式的'),
 (7652,'entity','entity','''ɛntəti','n','实体；存在；本质'),
 (7653,'plaster','plaster','''plæstɚ','n','石膏；灰泥；膏药'),
@@ -7930,7 +7928,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (7799,'bibliography','bibliography',',bɪblɪ''ɑɡrəfi','n','参考书目；文献目录'),
 (7800,'brutal','brutal','''brutl','adj','残忍的；野蛮的，不讲理的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (7801,'pail','pail','pel','n','桶，提桶'),
 (7802,'glamor','glamor','''glæmɚ','n','魅力；魔法；迷人的美（等于glamour）'),
 (7803,'exquisite','exquisite','ɪk''skwɪzɪt','adj','精致的；细腻的；优美的，高雅的；异常的；剧烈的'),
@@ -8082,7 +8080,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (7949,'delirium','delirium','dɪ''lɪrɪəm','n','神智昏迷，说胡话；极度兴奋'),
 (7950,'slag','slag','slæɡ','n','矿渣，炉渣，熔渣');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (7951,'civic','civic','''sɪvɪk','adj','城市的；市民的'),
 (7952,'misgiving','misgiving',',mis''ɡiviŋ','n','怀疑，疑虑'),
 (7953,'vex','vex','vɛks','v','使烦恼，使苦恼'),
@@ -8234,7 +8232,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (8099,'drudgery','drudgery','''drʌdʒəri','n','苦工，重活，单调乏味的工作'),
 (8100,'saline','saline','''selin','adj','含盐的；咸的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (8101,'concoct','concoct','kən''kɑkt','v','调合；编造(故事等)'),
 (8102,'ungainly','ungainly','ʌn''ɡenli','adj','笨拙的，难看的'),
 (8103,'asylum','asylum','ə''saɪləm','n','避难所；疯人院；避难'),
@@ -8386,7 +8384,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (8249,'jeopardize','jeopardize','''dʒɛpɚdaɪz','v','使受危害，使陷险境'),
 (8250,'sterilize','sterilize','''stɛrəlaɪz','v','使不结果实；使绝育；使无效；杀菌');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (8251,'deadlock','deadlock','''dɛdlɑk','n','僵局，僵局'),
 (8252,'rupture','rupture','''rʌptʃɚ','n&v','破裂'),
 (8253,'vindicate','vindicate','''vɪndɪket','v','为辩白；证明正确'),
@@ -8538,7 +8536,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (8399,'evict','evict','ɪ''vɪkt','v','驱逐'),
 (8400,'recital','recital','rɪ''saɪtl','n','详述；演奏会；独奏会');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (8401,'gush','gush','ɡʌʃ','n','迸发'),
 (8402,'lethal','lethal','''liθl','adj','致死的；致死的'),
 (8403,'exhort','exhort','ɪɡ''zɔrt','v','劝告'),
@@ -8690,7 +8688,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (8549,'sparse','sparse','spɑrs','adj','稀少的；稀疏的'),
 (8550,'decrepit','decrepit','dɪ''krɛpɪt','adj','老弱的，衰老的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (8551,'legislate','legislate','''lɛdʒɪslet','v','立法'),
 (8552,'outdo','outdo',',aʊt''du','v','超过；胜过'),
 (8553,'anthology','anthology','æn''θɑlədʒi','n','诗集'),
@@ -8842,7 +8840,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (8699,'center','center','''sɛntɚ','n&a','中心(的)'),
 (8700,'researcher','researcher','ri''sɝtʃɚ','n','研究者,调查者');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (8701,'iceberg','iceberg','''aɪs''bɝg','n','冰山,冷若冰霜的人'),
 (8702,'predator','predator','''prɛdətɚ','n','掠夺者,食肉动物'),
 (8703,'biological','biological',',baɪə''lɑdʒɪkl','adj','生物(学)的'),
@@ -8994,7 +8992,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (8849,'calcium','calcium','''kælsɪəm','n','钙'),
 (8850,'islander','islander','''aɪləndɚ','n','岛上居民');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (8851,'neolithic','neolithic','ˌniəˈlɪθɪk','adj','新石器时代的'),
 (8852,'spore','spore','spɔr','n','孢子'),
 (8853,'Texas','texas','''teksəs','n','德克萨斯州(美国州名)'),
@@ -9146,7 +9144,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (8999,'gill','gill','ɡɪl','n','鳃,及耳[液量单位]'),
 (9000,'meaningful','meaningful','''minɪŋfl','adj','意味深长的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (9001,'agrarian','agrarian','ə''ɡrɛrɪən','adj','有关土地的, 耕地的'),
 (9002,'canoes','canoes',NULL,'n','独木舟'),
 (9003,'starling','starling','''stɑrlɪŋ','n','欧掠鸟'),
@@ -9298,7 +9296,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (9149,'phonograph','phonograph','''fonəɡræf','n','留声机, 电唱机'),
 (9150,'Eurasia','eurasia','juə''reiʃə','n','欧亚大陆');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (9151,'cobalt','cobalt','''kobɔlt','n','[化]钴'),
 (9152,'wale','wale','wel','n','条痕'),
 (9153,'concur','concur','kən''kɝ','v','同时发生'),
@@ -9450,7 +9448,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (9299,'eusocial','eusocial','ju:''səuʃəl','adj','(昆虫)完全社会性的'),
 (9300,'oliver','oliver','''ɑləvɚ','n','脚踏铁槌');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (9301,'intensively','intensively','in''tensivli','adv','加强地, 集中地'),
 (9302,'unstable','unstable','ʌn''stebl','adj','不牢固的, 不稳定的'),
 (9303,'reheat','reheat','riː''hiːt','v','再热'),
@@ -9602,7 +9600,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (9449,'boule','boule','bʊl','n','人造宝石，议会'),
 (9450,'Berlin','berlin','bɝ''lɪn','n','柏林[德国]');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (9451,'trance','trance','træns','n&v','恍惚；出神'),
 (9452,'vigorously','vigorously','''vɪgərəsli','adv','精力旺盛地；健壮地'),
 (9453,'brightly','brightly','''braɪtlɪ','adv','明亮地'),
@@ -9754,7 +9752,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (9599,'cavern','cavern','''kævɚn','n','洞穴，大山洞'),
 (9600,'minuscule','minuscule','''mɪnəskjul','n&a','草写小字(的)');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (9601,'envelop','envelop','ɪn''vɛləp','v','包封, 遮盖'),
 (9602,'coppersmith','coppersmith','''kɔpəsmiθ','n','铜匠'),
 (9603,'portability','portability','potə''bɪləti','n','可携带, 轻便'),
@@ -9906,7 +9904,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (9749,'crocodile','crocodile','''krɑkə''daɪl','n','鳄鱼, 鳄鱼皮'),
 (9750,'calve','calve','kæv','v','生小牛, (使)冰山崩解');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (9751,'usefulness','usefulness','''jʊsfəlnəs','n','有用, 有效性'),
 (9752,'olfactory','olfactory','ɑl''fæktəri','adj','嗅觉的'),
 (9753,'cranial','cranial','''krenɪəl','adj','头盖(形)的'),
@@ -10058,7 +10056,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (9899,'bluish','bluish','''bluɪʃ','adj','带蓝色的'),
 (9900,'autobiographical','autobiographical',',ɔtə,baɪə''græfɪkl','adj','自传的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (9901,'Parisian','parisian','pə''rizjən','n&a','巴黎(人)(的)'),
 (9902,'halfway','halfway',',hæf''we','adj','中途的ad半路地'),
 (9903,'postwar','postwar','''post''wɔr','adj','战后的'),
@@ -10210,7 +10208,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (10049,'luckily','luckily','''lʌkɪli','adv','幸运地'),
 (10050,'successional','successional','sək''seʃənl','adj','接连著的, 连续性的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (10051,'drake','drake','dreɪk','n','公鸭, 蜉蝣类'),
 (10052,'salinization','salinization',',selɪnaɪ''zeʃən','n','盐渍化'),
 (10053,'shrinkage','shrinkage','''ʃrɪŋkɪdʒ','n','收缩'),
@@ -10362,7 +10360,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (10199,'supercontinent','supercontinent','''supɚkɑntɪnənt','n','[地]超大陆'),
 (10200,'hieroglyphic','hieroglyphic',',haɪərə''glɪfɪk','n','象形文字');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (10201,'condenser','condenser','kən''dɛnsɚ','n','冷凝器, 电容器'),
 (10202,'streptomycin','streptomycin',',strɛptə''maɪsɪn','n','链霉素'),
 (10203,'innermost','innermost','''ɪnɚmost','adj','最里面的, 内心的'),
@@ -10514,7 +10512,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (10349,'anvil','anvil','''ænvɪl','n','[解]砧骨'),
 (10350,'excellence','excellence','''ɛksləns','n','优秀, 卓越');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (10351,'loggerhead','loggerhead','''lɔɡəhɛd','n','傻子,铁球棒'),
 (10352,'demonstration','demonstration',',dɛmən''streʃən','n','示范, 实证'),
 (10353,'dike','dike','daɪk','n','堤防'),
@@ -10666,7 +10664,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (10499,'nonstop','nonstop','nɑn''stɑp','adj','不断的,直达的'),
 (10500,'bifocal','bifocal','''baɪ''fokl','adj','双焦点的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (10501,'cougar','cougar','''kuɡɚ','n','[动]美洲狮(尤指Felis concolor)'),
 (10502,'smear','smear','smɪr','v','涂污,弄脏'),
 (10503,'ocher','ocher','''okɚ','n','黄土, 赭土'),
@@ -10818,7 +10816,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (10649,'familiarity','familiarity','fə,mɪlɪ''ærəti','n','熟悉,通晓,精通'),
 (10650,'stringent','stringent','''strɪndʒənt','adj','严厉的,迫切的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (10651,'cabinetmaker','cabinetmaker','''kæbɪnətmekɚ','n','家具师,细工木匠'),
 (10652,'resentment','resentment','rɪ''zɛntmənt','n','怨恨,愤恨'),
 (10653,'purposely','purposely','''pɝpəsli','adv','故意地,蓄意地'),
@@ -10970,7 +10968,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (10799,'premiere','premiere','prɪ''mɪr','v','初次公演'),
 (10800,'screening','screening','''skrinɪŋ','n','放映');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (10801,'exemplary','exemplary','ɪɡ''zɛmpləri','adj','典范的,惩戒性的'),
 (10802,'Austrian','austrian','''ɔstriən','n','奥地利人'),
 (10803,'watershed','watershed','''wɔtɚʃɛd','n','分水岭'),
@@ -11122,7 +11120,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (10949,'successively','successively','sək''sɛsɪvli','adv','一个接一个地'),
 (10950,'romanize','romanize','''rəumənaiz','v','古罗马化, 用罗马字书写');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (10951,'teacup','teacup','ˈtiˌkʌp','n','茶杯'),
 (10952,'characterization','characterization',',kærəktəraɪ''zeʃən','n','描述, 人物之创造'),
 (10953,'earthen','earthen','''ɝθn','adj','土制的, 陶制的'),
@@ -11274,7 +11272,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (11099,'tantamount','tantamount','''tæntə''maʊnt','adj','同等的,相当于'),
 (11100,'preen','preen','prin','v','整理羽毛，(人)打扮修饰');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (11101,'marvelously','marvelously','''ma:vləsli','adv','奇迹般地,奇异地'),
 (11102,'cavalry','cavalry','''kævlri','n','骑兵'),
 (11103,'unacceptable','unacceptable',',ʌnək''sɛptəbl','adj','不能接受的, 不受欢迎的'),
@@ -11426,7 +11424,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (11249,'cider','cider','''saɪdɚ','n','苹果酒'),
 (11250,'bard','bard','bɑrd','n','吟游诗人');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (11251,'presage','presage','''prɛsɪdʒ','n','预兆 v预示'),
 (11252,'flatboat','flatboat','''flæt,bəut','n','(浅水)平底船'),
 (11253,'peal','peal','pil','n','钟声  v(使)鸣响'),
@@ -11578,7 +11576,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (11399,'amenable','amenable','ə''minəbl','adj','顺从的；对…负有责任(义务)的'),
 (11400,'binge','binge','bɪndʒ','n','狂闹, 狂欢');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (11401,'quicksand','quicksand','''kwɪksænd','n','流沙, 敏捷'),
 (11402,'einkorn','einkorn','''aɪnkɔːn','n','单粒小麦'),
 (11403,'unanticipated','unanticipated','''ʌnæn''tisipeitid','adj','不曾预料到的'),
@@ -11730,7 +11728,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (11549,'cleverness','cleverness','''klevənis','n','聪明, 机灵'),
 (11550,'bombardment','bombardment','bɑm''bɑrdmənt','n','炮击, 轰击');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (11551,'lounger','lounger','''laundʒə','n','漫步的人, 懒人'),
 (11552,'northward','northward','''nɔrθwɚdz','adv','向北'),
 (11553,'dugout','dugout','''dʌɡaʊt','n','防空洞, 独木舟'),
@@ -11882,7 +11880,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (11699,'ostrich','ostrich','''ɔstrɪtʃ','n','鸵鸟'),
 (11700,'faintly','faintly','''fentli','adv','微弱地, 朦胧地');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (11701,'dazzlingly','dazzlingly','''dæzliŋli','adv','灿烂地, 耀眼地'),
 (11702,'tint','tint','tɪnt','n','色彩'),
 (11703,'varve','varve','vɑrv','n','[地质]纹泥'),
@@ -12034,7 +12032,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (11849,'Oakland','oakland','''əuklənd','n','奥克兰(美国加利福尼亚州西部城市)'),
 (11850,'allude','allude','ə''lʊd','v','暗指，提及');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (11851,'sunburst','sunburst','''sʌnbɝst','n','从云隙射下的阳光'),
 (11852,'lordly','lordly','''lɔrdli','adj','高贵的；高傲的'),
 (11853,'rebellious','rebellious','rɪ''bɛljəs','adj','反抗的，难控制的'),
@@ -12186,7 +12184,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (11999,'landholder','landholder','''lænd,həuldə','n','地主, 土地拥有者'),
 (12000,'workable','workable','''wɝkəbl','adj','可经营的, 可使用的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (12001,'moralism','moralism','''mɒr(ə)lɪz(ə)m','n','道德主义, 说教'),
 (12002,'dune','dune','dʊn','n','沙丘'),
 (12003,'nationalism','nationalism','''næʃnəlɪzəm','n','民族主义, 国家主义'),
@@ -12338,7 +12336,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (12149,'chimp','chimp','tʃɪmp','n','(非洲)黑猩猩'),
 (12150,'waterworks','waterworks','''wɔtɚwɝks','n','自来水厂,供水系统');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (12151,'lieu','lieu','lu','n','场所'),
 (12152,'parkway','parkway','''pɑrk''we','n','公园道路, 驾车专用道路'),
 (12153,'serene','serene','sə''rin','adj','平静的 n宁静'),
@@ -12490,7 +12488,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (12299,'infrequently','infrequently','in''fri:kwəntli','adv','罕见地, 稀少的'),
 (12300,'quiescent','quiescent','kwɪ''ɛsnt','adj','静止的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (12301,'inanity','inanity','i''nænəti','n','空虚, 愚蠢'),
 (12302,'romancer','romancer','rəu''mænsə','n','传奇小说作家, 讲虚构故事的人'),
 (12303,'strikingly','strikingly','''straɪkɪŋli','adv','醒目地, 引人侧目地'),
@@ -12642,7 +12640,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (12449,'inchworm','inchworm','''ɪntʃwɝm','n','[昆] 尺蠖'),
 (12450,'smite','smite','smaɪt','v','重击');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (12451,'indifference','indifference','ɪn''dɪfrəns','n','不关心'),
 (12452,'eyelid','eyelid','''aɪ,lɪd','n','眼皮, 眼睑'),
 (12453,'comfortably','comfortably','''kʌmftəbli','adv','舒适地'),
@@ -12794,7 +12792,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (12599,'nutritionist','nutritionist','nu''trɪʃənɪst','n','营养学家'),
 (12600,'dismal','dismal','''dɪzməl','adj','阴沉的, 凄凉的n沼泽');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (12601,'roe','roe','ro','n','鱼卵,獐鹿'),
 (12602,'unrecognizable','unrecognizable',',ʌnrɛkəɡ''naɪzəbl','adj','未被承认的, 无法识别的'),
 (12603,'directive','directive','daɪ''rɛktɪv','n','指示'),
@@ -12946,7 +12944,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (12749,'churlish','churlish','''tʃə:liʃ','adj','没有礼貌的；脾气暴躁的'),
 (12750,'sermonize','sermonize','''sɝmənaɪz','v','说教；布道');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (12751,'quadrant','quadrant','''kwɑdrənt','n','象限；[海洋][天] 象限仪；四分之一圆'),
 (12752,'canine','canine','''kenaɪn','adj','犬的；犬齿的；犬科的；似犬的'),
 (12753,'veracity','veracity','və''ræsəti','n','诚实；精确性；老实；说真实话'),
@@ -13098,7 +13096,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (12899,'corroborate','corroborate','kə''rɑbəret','v','证实；使坚固'),
 (12900,'tremulous','tremulous','''trɛmjələs','adj','胆小的；战栗的；震颤的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (12901,'ire','ire','''aɪɚ','n','忿怒'),
 (12902,'trajectory','trajectory','trə''dʒɛktəri','n','[物] 轨道，轨线；[航][军] 弹道'),
 (12903,'stultify','stultify','''stʌltɪfaɪ','v','使变无效；使显得愚笨；使无价值'),
@@ -13250,7 +13248,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (13049,'indolent','indolent','''ɪndələnt','adj','懒惰的；无痛的'),
 (13050,'recriminate','recriminate','ri''krimineit','v','反责；反唇相讥');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (13051,'inimical','inimical','ɪ''nɪmɪkl','adj','敌意的；有害的'),
 (13052,'heterogeneity','heterogeneity',',hetərəudʒi''ni:əti','n','[生物] 异质性；[化学] 不均匀性；[化学] 多相性'),
 (13053,'stigma','stigma','''stɪɡmə','n','[植] 柱头；耻辱；污名；烙印；特征'),
@@ -13402,7 +13400,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (13199,'justifiable','justifiable','''dʒʌstɪfaɪəbl','adj','可辩解的，有道理的；可证明为正当的'),
 (13200,'concordant','concordant','kən''kɔrdnt','adj','和谐的；协调的；一致的；和声的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (13201,'alcove','alcove','''ælkov','n','凹室；壁龛'),
 (13202,'votive','votive','''votɪv','adj','奉献的（副词votively）；献纳的；诚心祈求的'),
 (13203,'sanguine','sanguine','''sæŋɡwin','adj','乐观的；满怀希望的；面色红润的'),
@@ -13554,7 +13552,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (13349,'badger','badger','''bædʒɚ','n','獾；獾皮；（大写）獾州人（美国威斯康星州人的别称）；<动><澳>毛鼻袋熊'),
 (13350,'becalm','becalm','bi''kɑ:m','v','使安静；使停滞；因无风而使停航');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (13351,'vacuous','vacuous','''vækjuəs','adj','空的；空虚的；空洞的；无意义的'),
 (13352,'euphemism','euphemism','''jufəmɪzəm','n','委婉语；委婉说法'),
 (13353,'permutation','permutation','''pɝmjʊ''teʃən','n','[数] 排列；[数] 置换'),
@@ -13706,7 +13704,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (13499,'caitiff','caitiff','''keitif','adj','卑劣的；胆小的'),
 (13500,'turgid','turgid','''tɝdʒɪd','adj','肿胀的；浮夸的；浮肿的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (13501,'twinge','twinge','twɪndʒ','n','阵痛；悔恨'),
 (13502,'compressible','compressible','kəm''presəbl','adj','可压缩的；可压榨的'),
 (13503,'asinine','asinine','''æsɪnaɪn','adj','驴的；愚蠢的，固执的；驴子似的'),
@@ -13858,7 +13856,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (13649,'diagnosis','diagnosis',',daɪəɡ''nosɪs','n','诊断'),
 (13650,'aggravation','aggravation',',ægrə''veʃən','n','加剧；激怒；更恶化');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (13651,'cauterize','cauterize','''kɔ:təraiz','v','烧灼；腐蚀；使麻木（等于cauterise）'),
 (13652,'culpable','culpable','''kʌlpəbl','adj','有罪的；该责备的；不周到的；应受处罚的'),
 (13653,'circuitous','circuitous','sɚ''kjʊɪtəs','adj','迂曲的；绕行的；迂回线路的'),
@@ -14010,7 +14008,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (13799,'elocution','elocution',',ɛlə''kjuʃən','n','朗诵法；演说法；雄辩术'),
 (13800,'infamous','infamous','''ɪnfəməs','adj','声名狼藉的；无耻的；邪恶的；不名誉的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (13801,'scanner','scanner','''skænɚ','n','[计] 扫描仪；扫描器；光电子扫描装置'),
 (13802,'anthropoid','anthropoid','''ænθrəupɔid','adj','类人猿的；类人的；（猿等）似人类的'),
 (13803,'doleful','doleful','''dolfl','adj','寂寞的；悲哀的；阴沉的；忧郁的'),
@@ -14162,7 +14160,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (13949,'inexorable','inexorable','ɪn''ɛksərəbl','adj','无情的；不屈不挠的；不可阻挡的；无法改变的'),
 (13950,'agape','agape','ə''ɡep','adj','张开著；张口惊视的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (13951,'abet','abet','ə''bɛt','v','煽动，教唆；支持'),
 (13952,'brazier','brazier','''brezɪɚ','n','火盆；铜匠（等于 brasier）'),
 (13953,'brethren','brethren','''brɛðrən','n','<旧>兄弟们，同胞；〈旧〉同党，会友'),
@@ -14314,7 +14312,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (14099,'oblivion','oblivion','ə''bliviən, ɔ-','n','遗忘；湮没；赦免'),
 (14100,'penitent','penitent','''pɛnətənt','adj','忏悔的，悔过的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (14101,'mendicant','mendicant','''mɛndɪkənt','adj','行乞的；托钵修道会的'),
 (14102,'provident','provident','''prɑvɪdənt','adj','节俭的；有先见之明的；顾及未来的'),
 (14103,'interpolate','interpolate','ɪn''tɝpəlet','v','篡改；插入新语句'),
@@ -14466,7 +14464,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (14249,'effuse','effuse','ɪ''fjʊs','v','流出；涌出；泻出'),
 (14250,'derogate','derogate','''dɛrəɡet','v','减损；贬损');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (14251,'cognizant','cognizant','''kɑgnɪzənt','adj','审理的；已认知的'),
 (14252,'furlough','furlough','''fɝlo','n','休假；暂时解雇；放假'),
 (14253,'blatant','blatant','''bleitənt','adj','喧嚣的；公然的；炫耀的；俗丽的'),
@@ -14618,7 +14616,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (14399,'spectroscope','spectroscope','''spɛktrəskop','n','[光] 分光镜'),
 (14400,'elocutionist','elocutionist',',elə''kju:ʃənist','n','演说家；雄辩家；朗诵者');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (14401,'jocular','jocular','''dʒɑkjəlɚ','adj','爱开玩笑的；打趣的；滑稽的'),
 (14402,'betrothal','betrothal','bi''trəuðəl','n','订婚；婚约'),
 (14403,'stimulant','stimulant','''stɪmjələnt','n','[药] 兴奋剂；刺激物；酒精饮料'),
@@ -14770,7 +14768,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (14549,'acquiescence','acquiescence','''ækwɪ''ɛsns','n','默许；默从'),
 (14550,'frivolous','frivolous','''frɪvələs','adj','无聊的；轻佻的；琐碎的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (14551,'polytechnic','polytechnic','''pɑlə''tɛknɪk','adj','各种工艺的；综合技术的'),
 (14552,'laud','laud','lɔd','v','赞美；称赞'),
 (14553,'betimes','betimes','bɪ''taɪmz','adv','及时，准时；早'),
@@ -14922,7 +14920,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (14699,'Pythagorean','pythagorean','pai''θægəriən','adj','毕达哥拉斯的'),
 (14700,'counterproductive','counterproductive',',kaʊntɚprə''dʌktɪv','adj','反生产的；使达不到预期目标的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (14701,'fatality','fatality','fə''tæləti','n','死亡；宿命；致命性；不幸；灾祸'),
 (14702,'enshrine','enshrine','ɪn''ʃraɪn','v','铭记，珍藏；把…置于神龛内；把…奉为神圣'),
 (14703,'indenture','indenture','ɪn''dɛntʃɚ','n','契约；合同'),
@@ -15074,7 +15072,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (14849,'materialistic','materialistic','mə''tɪrɪə''lɪstɪk','adj','唯物主义的；唯物论的；金钱至上的'),
 (14850,'fivefold','fivefold','''faɪvfold','adv','五倍地；五重地');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (14851,'landfill','landfill','''lænd''fɪl','n','垃圾填埋地；垃圾堆'),
 (14852,'endothermic','endothermic',',ɛndo''θɝmɪk','adj','[热] 吸热的；温血的'),
 (14853,'influenza','influenza',',ɪnflu''ɛnzə','n','[内科] 流行性感冒（简写flu）；家畜流行性感冒'),
@@ -15226,7 +15224,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (14999,'paleoclimatologist','paleoclimatologist',NULL,'n','（英）古气候学家 (paleoclimatology的变形)'),
 (15000,'matriarch','matriarch','''metrɪ''ɑrk','n','女家长；女统治者；女负责人；受人尊敬的妇女');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (15001,'vertice','vertice',NULL,'n','顶点'),
 (15002,'putty','putty','''pʌti','n','油灰；氧化锡'),
 (15003,'tryptophan','tryptophan','''trɪptə,fæn','n','[生化] 色氨酸'),
@@ -15378,7 +15376,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (15149,'maternity','maternity','mə''tɝnəti','n','母性，母道；[妇产] 妇产科医院'),
 (15150,'protestant','protestant','''prɑtɪstənt','adj','抗议的；持异议的；新教的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (15151,'seesaw','seesaw','''si,sɔ','n','跷跷板；秋千'),
 (15152,'determinism','determinism','dɪ''tɝmɪnɪzəm','n','[力] 决定论'),
 (15153,'pneumonic','pneumonic','nju:''mɔnik','adj','肺的；肺炎的'),
@@ -15530,7 +15528,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (15299,'unrefined','unrefined',',ʌnrɪ''faɪnd','adj','未提炼的'),
 (15300,'cardiopulmonary','cardiopulmonary',',kɑrdɪo''pʌlmənəri','adj','心肺的；与心肺有关的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (15301,'backwater','backwater','''bækwɔtɚ','n','回水；死水；停滞不进的状态或地方'),
 (15302,'haddock','haddock','''hædək','n','[鱼] 黑线鳕（鳕的一种）'),
 (15303,'pup','pup','pʌp','n','小狗；幼畜'),
@@ -15682,7 +15680,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (15449,'malcontent','malcontent','''mælkən''tɛnt','adj','不满的'),
 (15450,'disgruntled','disgruntled','dɪs''ɡrʌntld','adj','不满的, 不高兴的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (15451,'discontented','discontented',',dɪskən''tɛntɪd','adj','不满意的'),
 (15452,'ineffaceable','ineffaceable',',ini''feisəbl','adj','不能除去的, 不能取消的'),
 (15453,'inexpiable','inexpiable','ɪn''ɛkspɪəbl','adj','不能抵偿的, 不能平息的'),
@@ -15834,7 +15832,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (15599,'towering','towering','''taʊərɪŋ','adj','高耸的, 杰出的, 激烈的'),
 (15600,'formative','formative','''fɔrmətɪv','adj','格式化的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (15601,'gnomic','gnomic','''nomɪk','adj','格言的, 含格言的'),
 (15602,'sundry','sundry','''sʌndri','adj','各式各样的'),
 (15603,'hooked','hooked','hʊkt','adj','钩状的'),
@@ -15986,7 +15984,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (15749,'doable','doable','''duəbl','adj','可做的, 可行的'),
 (15750,'raring','raring','''rɛrɪŋ','adj','渴望的, 急切的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (15751,'inane','inane','ɪ''nen','adj','空洞的'),
 (15752,'scared','scared','skɛrd','adj','恐惧的'),
 (15753,'glib','glib','glɪb','adj','口齿伶俐的, 油腔滑调的'),
@@ -16138,7 +16136,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (15899,'maneuverable','maneuverable','mə''nu:vərəbl','adj','容易操作的, 有机动性的'),
 (15900,'effortless','effortless','''ɛfɚtləs','adj','容易的, 不费力气的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (15901,'cushy','cushy','''kuʃi','adj','容易的, 轻松而容易赚钱的'),
 (15902,'tippy','tippy','''tipi','adj','容易倾斜的, 不安定的, <英>头等的, 漂亮的, (毛织品)多绒尖的'),
 (15903,'pleonastic','pleonastic',',pli:ə''næstik','adj','冗言的, 重复的'),
@@ -16290,7 +16288,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (16049,'aspermous','aspermous','ə''spə:məs','adj','无种子的'),
 (16050,'orchestic','orchestic','ɔ:''kestik','adj','舞蹈的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (16051,'hygroscopic','hygroscopic',',haɪgrə''skɑpɪk','adj','吸湿的'),
 (16052,'appealing','appealing','əˈpiːlɪŋ','adj','吸引人的, 哀诉似的, 恳求似的'),
 (16053,'exiguous','exiguous','ɛɡ''zɪɡjuəs','adj','稀少的, 细小的, 些须的'),
@@ -16442,7 +16440,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (16199,'portentous','portentous','pɔr''tɛntəs','adj','预示性的'),
 (16200,'premeditated','premeditated',',pri''mɛdɪtetɪd','adj','预想的, 预谋的');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (16201,'rotund','rotund','ro''tʌnd','adj','圆形的, 洪亮的'),
 (16202,'pelagic','pelagic','pə''lædʒɪk','adj','远洋的, 浮游的'),
 (16203,'outre','outre','''u:trei','adj','越出常轨的, 过度的'),
@@ -16594,7 +16592,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (16349,'taking','taking','''tekɪŋ','n','(用复数)营业收入, 取得, 捕获'),
 (16350,'lingo','lingo','''lɪŋgo','n','（尤指）方言, 行话, 隐语');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (16351,'edification','edification',',ɛdɪfɪ''keʃən','n','(尤指道德或精神方面的)教诲, 启迪, 熏陶'),
 (16352,'amnesty','amnesty','''æmnəsti','n','(尤指对反政府政治犯的)特赦'),
 (16353,'nullity','nullity','''nʌləti','n','(尤指法律上的)无效, 无效的行为, 无效的证书'),
@@ -16746,7 +16744,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (16499,'blowhard','blowhard','''blohɑrd','n','<俚>吹牛大家'),
 (16500,'quickie','quickie','''kwɪki','n','<俚>匆匆做成的事, 快饮');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (16501,'logjam','logjam','''lɔɡdʒæm','n','<美>（水道）受圆木阻塞, 停滞状态, 僵局'),
 (16502,'bleachers','bleachers','''blitʃɚz','n','<美>(运动场的)露天看台'),
 (16503,'affidavit','affidavit',',æfə''devɪt','n','<美>[律]宣誓书, (经陈诉者宣誓在法律上可采作证据的)书面陈述'),
@@ -16898,7 +16896,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (16649,'plenum','plenum','''plinəm','n','充实, 充满, 全体会议, 高压'),
 (16650,'revulsion','revulsion','rɪ''vʌlʃən','n','抽回');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (16651,'xenophobia','xenophobia',',zɛnə''fobɪə','n','仇外, 惧外者'),
 (16652,'antic','antic','''æntɪk','n','丑角, 滑稽动作'),
 (16653,'egress','egress','''iɡrɛs','n','出口, 外出'),
@@ -17050,7 +17048,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (16799,'folderol','folderol','''fɔldərɔl','n','废物, 废话, 不值钱的东西, 胡闹'),
 (16800,'desuetude','desuetude','''dɛswɪ,tjʊd','n','废止, 不用');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (16801,'decibel','decibel','''dɛsɪbɛl','n','分贝'),
 (16802,'schismatic','schismatic','skɪz''mætɪk','n','分裂者, 分裂论者'),
 (16803,'parturition','parturition',',pɑrtjʊ''rɪʃən','n','分娩, 生产'),
@@ -17202,7 +17200,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (16949,'resplendence','resplendence','ri''splendəns','n','辉煌, 灿烂'),
 (16950,'cloister','cloister','''klɔɪstɚ','n','回廊, 修道院');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (16951,'reminiscence','reminiscence','''rɛmə''nɪsns','n','回想, 记忆力, 怀旧'),
 (16952,'parley','parley','''pɑrli','n','会谈'),
 (16953,'nuptial','nuptial','''nʌpʃl','n','婚礼'),
@@ -17354,7 +17352,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (17099,'internment','internment','ɪn''tɝnmənt','n','扣留, 收容'),
 (17100,'absinth','absinth','''æbsinθ','n','苦艾酒');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (17101,'pungency','pungency','''pʌndʒənsi','n','苦痛, 辛辣, 刺激, 尖刻'),
 (17102,'frisk','frisk','frɪsk','n','快乐, 快乐的时刻, 搜身'),
 (17103,'liberality','liberality',',lɪbə''ræləti','n','宽大, 磊落'),
@@ -17506,7 +17504,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (17249,'churl','churl','tʃɝl','n','农业工人,乡下人,粗野的人, 吝啬鬼'),
 (17250,'agronomist','agronomist','ə''ɡrɑnəmɪst','n','农艺学家, 农学家');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (17251,'falsification','falsification','''fɔ:lsifi''keiʃən','n','弄虚作假, 串改, 伪造, 歪曲'),
 (17252,'minion','minion','''mɪnɪən','n','奴才, 宠臣'),
 (17253,'slaver','slaver','''slævɚ','n','奴隶贩子, 奴隶贩卖船, 诱骗女子为娼者, 唾液'),
@@ -17658,7 +17656,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (17399,'abridgment','abridgment','ə''brɪdʒmənt','n','删节, 节略, 删节本'),
 (17400,'fomentation','fomentation',',fəumen''teiʃən','n','煽动');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (17401,'fulmination','fulmination','''fʌlmə''neiʃən','n','闪电, 爆发, 爆鸣'),
 (17402,'banter','banter','''bæntɚ','n','善意地取笑, 逗弄'),
 (17403,'mayhem','mayhem','''mehɛm','n','伤害罪之一种, 故意的伤害罪'),
@@ -17810,7 +17808,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (17549,'armistice','armistice','''ɑrmɪstɪs','n','停战, 休战'),
 (17550,'surcease','surcease','sə:''si:s','n','停止');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (17551,'mort','mort','mɔːt','n','通知猎物已死的号角声, 大量, 许多'),
 (17552,'equivalence','equivalence','ɪ''kwɪvələns','n','同等, [化]等价, 等值'),
 (17553,'coterie','coterie','''kotəri','n','同行, 圈内人, 伙伴'),
@@ -17962,7 +17960,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (17699,'preceptor','preceptor','''prisɛptɚ','n','校长'),
 (17700,'jesting','jesting','''dʒestiŋ','n','笑话, 滑稽');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (17701,'jest','jest','dʒɛst','n','笑话, 俏皮话'),
 (17702,'whit','whit','hwit','n','些微, 一点点'),
 (17703,'hysteria','hysteria','hɪ''stɪrɪə','n','歇斯底里, 不正常的兴奋, 癔病'),
@@ -18114,7 +18112,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (17849,'disquiet','disquiet','dɪs''kwaɪət','n','忧虑, 不安'),
 (17850,'doldrums','doldrums','''doldrəmz','n','忧郁, 赤道无风带');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (17851,'hypochondria','hypochondria','''haɪpə''kɑndrɪə','n','忧郁症, 臆想病'),
 (17852,'unguent','unguent','''ʌŋgwənt','n','油膏'),
 (17853,'stodge','stodge','stɑdʒ','n','油腻的食物, 贪吃的人'),
@@ -18266,7 +18264,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (17999,'congeal','congeal','kən''dʒil','v','(使)冻结, (使)凝结'),
 (18000,'bifurcate','bifurcate','''baɪfɚ''ket','v','(使)分叉');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (18001,'reactivate','reactivate','rɪ''æktɪvet','v','(使)恢复活动'),
 (18002,'decelerate','decelerate',',di''sɛləret','v','(使)减速'),
 (18003,'interweave','interweave',',ɪntɚ''wiv','v','(使)交织, 织进, (使)混杂'),
@@ -18418,7 +18416,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (18149,'ablate','ablate','æb''let','v','融化'),
 (18150,'squirm','squirm','skwɝm','v','蠕动');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (18151,'titillate','titillate','''tɪtə''let','v','搔痒, 使愉快'),
 (18152,'smirk','smirk','smɝk','v','傻笑'),
 (18153,'barricade','barricade','''bærɪ''ked','v','设路障'),
@@ -18570,7 +18568,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (18299,'electrocute','electrocute','ɪ''lɛktrəkjut','v','<美>处电刑, 触电致死'),
 (18300,'expiscate','expiscate',NULL,'vt','<主苏格兰>查出,探明搜出');
 
-INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
+INSERT OR IGNORE INTO words(id, headword, normalized, source_phonetic, source_pos, source_meaning) VALUES
 (18301,'conciliate','conciliate','kən''sɪlɪet','v','安慰, 赢得, 调和'),
 (18302,'disencumber','disencumber','dɪsɪn''kʌmbə; dɪsen-','v','摆脱烦恼, 不受妨碍'),
 (18303,'torrefy','torrefy','''tɔrɪfaɪ','vt','焙, 烤'),
@@ -18720,7 +18718,7 @@ INSERT INTO words(id, headword, normalized, source_phonetic, source_pos, source_
 (18447,'overreach','overreach',',ovɚ''ritʃ','v','走过头'),
 (18448,'checkmate','checkmate','''tʃekmeit','v','阻止并败, (象棋)将死');
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (1,1,1),
 (1,2,2),
 (1,3,3),
@@ -18922,7 +18920,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (1,199,199),
 (1,200,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (1,201,201),
 (1,202,202),
 (1,203,203),
@@ -19124,7 +19122,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (1,399,399),
 (1,400,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (1,401,401),
 (1,402,402),
 (1,403,403),
@@ -19326,7 +19324,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (1,599,599),
 (1,600,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (1,601,601),
 (1,602,602),
 (1,603,603),
@@ -19528,7 +19526,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (1,799,799),
 (1,800,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (1,801,801),
 (1,802,802),
 (1,803,803),
@@ -19549,7 +19547,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (1,818,818),
 (1,819,819);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (2,111,1),
 (2,820,2),
 (2,131,3),
@@ -19751,7 +19749,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (2,477,199),
 (2,230,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (2,940,201),
 (2,941,202),
 (2,942,203),
@@ -19953,7 +19951,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (2,1070,399),
 (2,1071,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (2,193,401),
 (2,337,402),
 (2,461,403),
@@ -20155,7 +20153,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (2,1192,599),
 (2,1193,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (2,1194,601),
 (2,686,602),
 (2,305,603),
@@ -20357,7 +20355,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (2,1327,799),
 (2,1328,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (2,233,801),
 (2,1329,802),
 (2,1330,803),
@@ -20559,7 +20557,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (2,1463,999),
 (2,798,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (2,142,1001),
 (2,1464,1002),
 (2,1465,1003),
@@ -20761,7 +20759,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (2,505,1199),
 (2,18,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (2,514,1201),
 (2,1583,1202),
 (2,368,1203),
@@ -20963,7 +20961,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (2,1719,1399),
 (2,1720,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (2,1721,1401),
 (2,1722,1402),
 (2,1723,1403),
@@ -20983,7 +20981,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (2,690,1417),
 (2,1733,1418);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,1734,1),
 (3,994,2),
 (3,1534,3),
@@ -21185,7 +21183,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,1661,199),
 (3,1859,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,1860,201),
 (3,1861,202),
 (3,23,203),
@@ -21387,7 +21385,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,8,399),
 (3,853,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,947,401),
 (3,1971,402),
 (3,1972,403),
@@ -21589,7 +21587,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,2095,599),
 (3,2096,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,2097,601),
 (3,40,602),
 (3,2098,603),
@@ -21791,7 +21789,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,1153,799),
 (3,1169,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,2211,801),
 (3,2212,802),
 (3,1586,803),
@@ -21993,7 +21991,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,1645,999),
 (3,2318,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,1046,1001),
 (3,1150,1002),
 (3,2319,1003),
@@ -22195,7 +22193,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,2435,1199),
 (3,2436,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,1386,1201),
 (3,782,1202),
 (3,2437,1203),
@@ -22397,7 +22395,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,2546,1399),
 (3,2547,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,2548,1401),
 (3,2549,1402),
 (3,1197,1403),
@@ -22599,7 +22597,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,264,1599),
 (3,2660,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,2661,1601),
 (3,2662,1602),
 (3,2663,1603),
@@ -22801,7 +22799,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,2776,1799),
 (3,2777,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,2778,1801),
 (3,1186,1802),
 (3,2779,1803),
@@ -23003,7 +23001,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,60,1999),
 (3,621,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,2888,2001),
 (3,2889,2002),
 (3,35,2003),
@@ -23205,7 +23203,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,3011,2199),
 (3,3012,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,3013,2201),
 (3,3014,2202),
 (3,1676,2203),
@@ -23407,7 +23405,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,320,2399),
 (3,97,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,1679,2401),
 (3,3135,2402),
 (3,3136,2403),
@@ -23609,7 +23607,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,3267,2599),
 (3,3268,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,3269,2601),
 (3,3270,2602),
 (3,3271,2603),
@@ -23811,7 +23809,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,3399,2799),
 (3,3400,2800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,542,2801),
 (3,3401,2802),
 (3,3402,2803),
@@ -24013,7 +24011,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,1485,2999),
 (3,993,3000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,3519,3001),
 (3,3520,3002),
 (3,3521,3003),
@@ -24215,7 +24213,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,313,3199),
 (3,3638,3200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,3639,3201),
 (3,3640,3202),
 (3,3641,3203),
@@ -24417,7 +24415,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,3755,3399),
 (3,3756,3400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,3757,3401),
 (3,506,3402),
 (3,3758,3403),
@@ -24619,7 +24617,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,255,3599),
 (3,1366,3600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (3,1058,3601),
 (3,3868,3602),
 (3,3869,3603),
@@ -24686,7 +24684,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (3,3902,3664),
 (3,3903,3665);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,1435,1),
 (4,3904,2),
 (4,861,3),
@@ -24888,7 +24886,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,1907,199),
 (4,1494,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,494,201),
 (4,520,202),
 (4,3969,203),
@@ -25090,7 +25088,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,3602,399),
 (4,828,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,3700,401),
 (4,4031,402),
 (4,4032,403),
@@ -25292,7 +25290,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,3762,599),
 (4,2561,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,4108,601),
 (4,1268,602),
 (4,1880,603),
@@ -25494,7 +25492,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,920,799),
 (4,2810,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,2301,801),
 (4,4187,802),
 (4,2634,803),
@@ -25696,7 +25694,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,4263,999),
 (4,1295,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,2647,1001),
 (4,4264,1002),
 (4,4265,1003),
@@ -25898,7 +25896,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,2186,1199),
 (4,905,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,3902,1201),
 (4,3498,1202),
 (4,4327,1203),
@@ -26100,7 +26098,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,4402,1399),
 (4,3542,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,2557,1401),
 (4,2758,1402),
 (4,3859,1403),
@@ -26302,7 +26300,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,1386,1599),
 (4,590,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,4466,1601),
 (4,1374,1602),
 (4,3573,1603),
@@ -26504,7 +26502,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,4519,1799),
 (4,598,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,985,1801),
 (4,2070,1802),
 (4,4520,1803),
@@ -26706,7 +26704,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,497,1999),
 (4,3562,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,1768,2001),
 (4,4587,2002),
 (4,2141,2003),
@@ -26908,7 +26906,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,1337,2199),
 (4,4653,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,4654,2201),
 (4,2429,2202),
 (4,4655,2203),
@@ -27110,7 +27108,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,34,2399),
 (4,88,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,2535,2401),
 (4,3237,2402),
 (4,1008,2403),
@@ -27312,7 +27310,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,4794,2599),
 (4,4795,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,3250,2601),
 (4,2479,2602),
 (4,3575,2603),
@@ -27514,7 +27512,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,285,2799),
 (4,1675,2800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,2331,2801),
 (4,1306,2802),
 (4,993,2803),
@@ -27716,7 +27714,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,2314,2999),
 (4,4944,3000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,4945,3001),
 (4,4946,3002),
 (4,4947,3003),
@@ -27918,7 +27916,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,5022,3199),
 (4,5023,3200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,3887,3201),
 (4,2853,3202),
 (4,5024,3203),
@@ -28120,7 +28118,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,2563,3399),
 (4,1058,3400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,2641,3401),
 (4,894,3402),
 (4,2068,3403),
@@ -28322,7 +28320,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,5156,3599),
 (4,2655,3600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (4,5157,3601),
 (4,5158,3602),
 (4,966,3603),
@@ -28463,7 +28461,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (4,3725,3738),
 (4,949,3739);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,1465,1),
 (5,1356,2),
 (5,5205,3),
@@ -28665,7 +28663,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,5329,199),
 (5,3300,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,5330,201),
 (5,3991,202),
 (5,2783,203),
@@ -28867,7 +28865,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,5455,399),
 (5,5456,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,5457,401),
 (5,5458,402),
 (5,5459,403),
@@ -29069,7 +29067,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,5585,599),
 (5,4600,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,4551,601),
 (5,4500,602),
 (5,5586,603),
@@ -29271,7 +29269,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,4137,799),
 (5,5721,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,1852,801),
 (5,5722,802),
 (5,5723,803),
@@ -29473,7 +29471,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,4702,999),
 (5,2099,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,5865,1001),
 (5,5866,1002),
 (5,5867,1003),
@@ -29675,7 +29673,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,2469,1199),
 (5,1607,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,6009,1201),
 (5,3692,1202),
 (5,6010,1203),
@@ -29877,7 +29875,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,950,1399),
 (5,6136,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,2610,1401),
 (5,6137,1402),
 (5,1947,1403),
@@ -30079,7 +30077,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,4412,1599),
 (5,6263,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,6264,1601),
 (5,6265,1602),
 (5,1970,1603),
@@ -30281,7 +30279,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,3203,1799),
 (5,6395,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,1367,1801),
 (5,3720,1802),
 (5,2558,1803),
@@ -30483,7 +30481,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,6516,1999),
 (5,3095,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (5,6517,2001),
 (5,6518,2002),
 (5,6519,2003),
@@ -30563,7 +30561,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (5,6576,2077),
 (5,3225,2078);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,6577,1),
 (6,6578,2),
 (6,1056,3),
@@ -30765,7 +30763,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,5298,199),
 (6,3802,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,6648,201),
 (6,2697,202),
 (6,6649,203),
@@ -30967,7 +30965,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,891,399),
 (6,6719,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,1578,401),
 (6,6720,402),
 (6,3360,403),
@@ -31169,7 +31167,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,2441,599),
 (6,4966,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,5928,601),
 (6,2770,602),
 (6,6030,603),
@@ -31371,7 +31369,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,2478,799),
 (6,6866,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,6867,801),
 (6,6868,802),
 (6,6869,803),
@@ -31573,7 +31571,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,4760,999),
 (6,2846,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,1557,1001),
 (6,6930,1002),
 (6,6931,1003),
@@ -31775,7 +31773,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,157,1199),
 (6,5534,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,7002,1201),
 (6,1600,1202),
 (6,2678,1203),
@@ -31977,7 +31975,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,7069,1399),
 (6,2464,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,5750,1401),
 (6,5501,1402),
 (6,2775,1403),
@@ -32179,7 +32177,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,1696,1599),
 (6,1574,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,3548,1601),
 (6,149,1602),
 (6,7144,1603),
@@ -32381,7 +32379,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,1392,1799),
 (6,5331,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,3621,1801),
 (6,4735,1802),
 (6,3845,1803),
@@ -32583,7 +32581,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,7288,1999),
 (6,4990,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,7289,2001),
 (6,7290,2002),
 (6,2784,2003),
@@ -32785,7 +32783,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,7356,2199),
 (6,4236,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,3115,2201),
 (6,4408,2202),
 (6,2518,2203),
@@ -32987,7 +32985,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,1904,2399),
 (6,2970,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,7421,2401),
 (6,14,2402),
 (6,3242,2403),
@@ -33189,7 +33187,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,2639,2599),
 (6,1709,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (6,7484,2601),
 (6,2814,2602),
 (6,7485,2603),
@@ -33344,7 +33342,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (6,7531,2752),
 (6,1804,2753);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,2453,1),
 (7,1404,2),
 (7,5125,3),
@@ -33546,7 +33544,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,2328,199),
 (7,4271,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,7123,201),
 (7,1067,202),
 (7,2661,203),
@@ -33748,7 +33746,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,1009,399),
 (7,2858,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,948,401),
 (7,3469,402),
 (7,1979,403),
@@ -33950,7 +33948,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,2220,599),
 (7,2086,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,6351,601),
 (7,5130,602),
 (7,2058,603),
@@ -34152,7 +34150,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,2329,799),
 (7,5060,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,1861,801),
 (7,2965,802),
 (7,5106,803),
@@ -34354,7 +34352,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,7558,999),
 (7,6785,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,5163,1001),
 (7,5115,1002),
 (7,300,1003),
@@ -34556,7 +34554,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,4397,1199),
 (7,3802,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,2189,1201),
 (7,4052,1202),
 (7,3876,1203),
@@ -34758,7 +34756,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,3576,1399),
 (7,3534,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,4836,1401),
 (7,1852,1402),
 (7,6327,1403),
@@ -34960,7 +34958,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,4005,1599),
 (7,1362,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,2853,1601),
 (7,5788,1602),
 (7,5353,1603),
@@ -35162,7 +35160,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,1990,1799),
 (7,2558,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,2731,1801),
 (7,5216,1802),
 (7,2603,1803),
@@ -35364,7 +35362,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,5455,1999),
 (7,5819,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,1838,2001),
 (7,193,2002),
 (7,1770,2003),
@@ -35566,7 +35564,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,5665,2199),
 (7,4613,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,2553,2201),
 (7,2077,2202),
 (7,2060,2203),
@@ -35768,7 +35766,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,7675,2399),
 (7,5562,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,7676,2401),
 (7,2711,2402),
 (7,4965,2403),
@@ -35970,7 +35968,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,3923,2599),
 (7,2773,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,515,2601),
 (7,6921,2602),
 (7,6531,2603),
@@ -36172,7 +36170,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,7737,2799),
 (7,2277,2800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,675,2801),
 (7,5405,2802),
 (7,7738,2803),
@@ -36374,7 +36372,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,5149,2999),
 (7,7755,3000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,663,3001),
 (7,5904,3002),
 (7,7756,3003),
@@ -36576,7 +36574,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,7779,3199),
 (7,7780,3200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,4855,3201),
 (7,3865,3202),
 (7,373,3203),
@@ -36778,7 +36776,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,4957,3399),
 (7,4422,3400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,3422,3401),
 (7,7813,3402),
 (7,868,3403),
@@ -36980,7 +36978,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,2690,3599),
 (7,5098,3600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,6758,3601),
 (7,3467,3602),
 (7,4206,3603),
@@ -37182,7 +37180,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,222,3799),
 (7,7853,3800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,5827,3801),
 (7,5634,3802),
 (7,5018,3803),
@@ -37384,7 +37382,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,4654,3999),
 (7,7877,4000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,2371,4001),
 (7,6430,4002),
 (7,3762,4003),
@@ -37586,7 +37584,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,2022,4199),
 (7,1500,4200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,4776,4201),
 (7,5082,4202),
 (7,4041,4203),
@@ -37788,7 +37786,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,4770,4399),
 (7,5594,4400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (7,4634,4401),
 (7,3783,4402),
 (7,3310,4403),
@@ -37923,7 +37921,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (7,5379,4532),
 (7,1432,4533);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,4702,1),
 (8,3811,2),
 (8,1012,3),
@@ -38125,7 +38123,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,5590,199),
 (8,4498,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,2303,201),
 (8,3238,202),
 (8,2177,203),
@@ -38327,7 +38325,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,6187,399),
 (8,8021,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,1739,401),
 (8,8022,402),
 (8,8023,403),
@@ -38529,7 +38527,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,6554,599),
 (8,4255,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,8072,601),
 (8,6042,602),
 (8,2549,603),
@@ -38731,7 +38729,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,3195,799),
 (8,4106,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,8124,801),
 (8,1032,802),
 (8,7658,803),
@@ -38933,7 +38931,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,5046,999),
 (8,4161,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,8175,1001),
 (8,8176,1002),
 (8,5594,1003),
@@ -39135,7 +39133,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,2266,1199),
 (8,3702,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,4543,1201),
 (8,8215,1202),
 (8,8216,1203),
@@ -39337,7 +39335,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,7889,1399),
 (8,6540,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,199,1401),
 (8,6403,1402),
 (8,5523,1403),
@@ -39539,7 +39537,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,8311,1599),
 (8,7241,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,2381,1601),
 (8,5467,1602),
 (8,7919,1603),
@@ -39741,7 +39739,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,1968,1799),
 (8,3922,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,6774,1801),
 (8,5978,1802),
 (8,5096,1803),
@@ -39943,7 +39941,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,3674,1999),
 (8,3366,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,1888,2001),
 (8,4145,2002),
 (8,8404,2003),
@@ -40145,7 +40143,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,5741,2199),
 (8,4857,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,7693,2201),
 (8,2205,2202),
 (8,6374,2203),
@@ -40347,7 +40345,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,6653,2399),
 (8,3875,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,5207,2401),
 (8,4846,2402),
 (8,5611,2403),
@@ -40549,7 +40547,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,8523,2599),
 (8,2582,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,2454,2601),
 (8,503,2602),
 (8,7630,2603),
@@ -40751,7 +40749,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,8571,2799),
 (8,8572,2800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,1950,2801),
 (8,7781,2802),
 (8,2084,2803),
@@ -40953,7 +40951,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,6193,2999),
 (8,7888,3000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,6531,3001),
 (8,7152,3002),
 (8,4125,3003),
@@ -41155,7 +41153,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,4611,3199),
 (8,3567,3200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,8658,3201),
 (8,4671,3202),
 (8,7249,3203),
@@ -41357,7 +41355,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,7302,3399),
 (8,4575,3400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (8,3592,3401),
 (8,5201,3402),
 (8,488,3403),
@@ -41386,7 +41384,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (8,6065,3426),
 (8,3609,3427);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,953,1),
 (9,4693,2),
 (9,1394,3),
@@ -41588,7 +41586,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,1659,199),
 (9,2299,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,5061,201),
 (9,1638,202),
 (9,806,203),
@@ -41790,7 +41788,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,1434,399),
 (9,597,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,1980,401),
 (9,8712,402),
 (9,1288,403),
@@ -41992,7 +41990,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,3928,599),
 (9,4681,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,8725,601),
 (9,3217,602),
 (9,3764,603),
@@ -42194,7 +42192,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,1690,799),
 (9,5063,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,3221,801),
 (9,8742,802),
 (9,4151,803),
@@ -42396,7 +42394,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,414,999),
 (9,4197,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,2909,1001),
 (9,7640,1002),
 (9,8768,1003),
@@ -42598,7 +42596,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,8794,1199),
 (9,8795,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,102,1201),
 (9,4974,1202),
 (9,7559,1203),
@@ -42800,7 +42798,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,4595,1399),
 (9,4894,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,1755,1401),
 (9,3109,1402),
 (9,3663,1403),
@@ -43002,7 +43000,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,6170,1599),
 (9,5142,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,1715,1601),
 (9,8192,1602),
 (9,8851,1603),
@@ -43204,7 +43202,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,2644,1799),
 (9,5033,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,6423,1801),
 (9,4858,1802),
 (9,5829,1803),
@@ -43406,7 +43404,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,1500,1999),
 (9,8930,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,8931,2001),
 (9,6431,2002),
 (9,8932,2003),
@@ -43608,7 +43606,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,7126,2199),
 (9,8010,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,3501,2201),
 (9,4891,2202),
 (9,4717,2203),
@@ -43810,7 +43808,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,3892,2399),
 (9,9039,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,2096,2401),
 (9,5547,2402),
 (9,8535,2403),
@@ -44012,7 +44010,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,7887,2599),
 (9,2835,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,2183,2601),
 (9,8283,2602),
 (9,556,2603),
@@ -44214,7 +44212,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,4172,2799),
 (9,3904,2800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,3886,2801),
 (9,3162,2802),
 (9,4245,2803),
@@ -44416,7 +44414,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,6388,2999),
 (9,6263,3000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,9224,3001),
 (9,9225,3002),
 (9,9226,3003),
@@ -44618,7 +44616,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,6571,3199),
 (9,9286,3200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,9287,3201),
 (9,3254,3202),
 (9,9288,3203),
@@ -44820,7 +44818,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,5062,3399),
 (9,9353,3400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,194,3401),
 (9,5400,3402),
 (9,2876,3403),
@@ -45022,7 +45020,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,2757,3599),
 (9,1799,3600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,9420,3601),
 (9,9421,3602),
 (9,9422,3603),
@@ -45224,7 +45222,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,5294,3799),
 (9,4962,3800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,9495,3801),
 (9,9496,3802),
 (9,9497,3803),
@@ -45426,7 +45424,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,6083,3999),
 (9,8657,4000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,9590,4001),
 (9,9591,4002),
 (9,7339,4003),
@@ -45628,7 +45626,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,3859,4199),
 (9,2368,4200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,4790,4201),
 (9,6440,4202),
 (9,9683,4203),
@@ -45830,7 +45828,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,5505,4399),
 (9,5962,4400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,9770,4401),
 (9,9771,4402),
 (9,4621,4403),
@@ -46032,7 +46030,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,5994,4599),
 (9,9867,4600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,7739,4601),
 (9,1963,4602),
 (9,9868,4603),
@@ -46234,7 +46232,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,5754,4799),
 (9,5908,4800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,1238,4801),
 (9,3171,4802),
 (9,9967,4803),
@@ -46436,7 +46434,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,10060,4999),
 (9,10061,5000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,10062,5001),
 (9,10063,5002),
 (9,1803,5003),
@@ -46638,7 +46636,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,10165,5199),
 (9,603,5200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,10166,5201),
 (9,10167,5202),
 (9,7841,5203),
@@ -46840,7 +46838,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,6253,5399),
 (9,6466,5400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,10272,5401),
 (9,10273,5402),
 (9,8426,5403),
@@ -47042,7 +47040,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,6870,5599),
 (9,5393,5600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,10378,5601),
 (9,10379,5602),
 (9,2523,5603),
@@ -47244,7 +47242,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,10488,5799),
 (9,5101,5800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,315,5801),
 (9,10489,5802),
 (9,10490,5803),
@@ -47446,7 +47444,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,10606,5999),
 (9,4207,6000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,8434,6001),
 (9,10607,6002),
 (9,10608,6003),
@@ -47648,7 +47646,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,5792,6199),
 (9,4473,6200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,6035,6201),
 (9,10730,6202),
 (9,7610,6203),
@@ -47850,7 +47848,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,10854,6399),
 (9,10855,6400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,10856,6401),
 (9,6230,6402),
 (9,3512,6403),
@@ -48052,7 +48050,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,10972,6599),
 (9,3609,6600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,5325,6601),
 (9,6122,6602),
 (9,10973,6603),
@@ -48254,7 +48252,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,11094,6799),
 (9,2201,6800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,11095,6801),
 (9,11096,6802),
 (9,1,6803),
@@ -48456,7 +48454,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,11220,6999),
 (9,11221,7000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,11222,7001),
 (9,11223,7002),
 (9,6473,7003),
@@ -48658,7 +48656,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,11367,7199),
 (9,11368,7200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,6708,7201),
 (9,6399,7202),
 (9,11369,7203),
@@ -48860,7 +48858,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,8067,7399),
 (9,11513,7400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,11514,7401),
 (9,11515,7402),
 (9,11516,7403),
@@ -49062,7 +49060,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,11645,7599),
 (9,11646,7600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,11647,7601),
 (9,4573,7602),
 (9,3161,7603),
@@ -49264,7 +49262,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,8462,7799),
 (9,5119,7800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,11773,7801),
 (9,11774,7802),
 (9,11775,7803),
@@ -49466,7 +49464,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,11909,7999),
 (9,11910,8000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,11911,8001),
 (9,11912,8002),
 (9,2761,8003),
@@ -49668,7 +49666,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,12049,8199),
 (9,8349,8200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,12050,8201),
 (9,12051,8202),
 (9,12052,8203),
@@ -49870,7 +49868,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,12177,8399),
 (9,4179,8400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,12178,8401),
 (9,7866,8402),
 (9,12179,8403),
@@ -50072,7 +50070,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,12311,8599),
 (9,12312,8600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,12313,8601),
 (9,8478,8602),
 (9,12314,8603),
@@ -50274,7 +50272,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,7297,8799),
 (9,12433,8800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,12434,8801),
 (9,12435,8802),
 (9,12436,8803),
@@ -50476,7 +50474,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,12563,8999),
 (9,12564,9000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,12565,9001),
 (9,12566,9002),
 (9,12567,9003),
@@ -50678,7 +50676,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,3650,9199),
 (9,12695,9200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (9,12696,9201),
 (9,12697,9202),
 (9,12698,9203),
@@ -50692,7 +50690,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (9,8404,9211),
 (9,12704,9212);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,6577,1),
 (10,12705,2),
 (10,12706,3),
@@ -50894,7 +50892,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,8057,199),
 (10,5596,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,12788,201),
 (10,649,202),
 (10,11989,203),
@@ -51096,7 +51094,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,12541,399),
 (10,12890,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,7674,401),
 (10,5905,402),
 (10,12891,403),
@@ -51298,7 +51296,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,12983,599),
 (10,12984,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,12985,601),
 (10,12986,602),
 (10,4192,603),
@@ -51500,7 +51498,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,5393,799),
 (10,6195,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13078,801),
 (10,8308,802),
 (10,5739,803),
@@ -51702,7 +51700,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,13162,999),
 (10,13163,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13164,1001),
 (10,13165,1002),
 (10,7021,1003),
@@ -51904,7 +51902,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,13253,1199),
 (10,7738,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,2207,1201),
 (10,8522,1202),
 (10,5545,1203),
@@ -52106,7 +52104,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,6006,1399),
 (10,7189,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,1149,1401),
 (10,9027,1402),
 (10,4897,1403),
@@ -52308,7 +52306,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,13432,1599),
 (10,13433,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13434,1601),
 (10,13435,1602),
 (10,3669,1603),
@@ -52510,7 +52508,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,7372,1799),
 (10,13526,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13527,1801),
 (10,13528,1802),
 (10,8371,1803),
@@ -52712,7 +52710,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,3658,1999),
 (10,8004,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13609,2001),
 (10,13610,2002),
 (10,1244,2003),
@@ -52914,7 +52912,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,5772,2199),
 (10,2114,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13700,2201),
 (10,5080,2202),
 (10,1499,2203),
@@ -53116,7 +53114,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,5965,2399),
 (10,13785,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13786,2401),
 (10,6678,2402),
 (10,3492,2403),
@@ -53318,7 +53316,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,2260,2599),
 (10,7830,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13881,2601),
 (10,8096,2602),
 (10,13882,2603),
@@ -53520,7 +53518,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,8102,2799),
 (10,12475,2800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,13966,2801),
 (10,12304,2802),
 (10,13967,2803),
@@ -53722,7 +53720,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,3698,2999),
 (10,3348,3000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,4168,3001),
 (10,8464,3002),
 (10,12272,3003),
@@ -53924,7 +53922,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,14133,3199),
 (10,9758,3200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,11579,3201),
 (10,14134,3202),
 (10,7003,3203),
@@ -54126,7 +54124,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,10834,3399),
 (10,5103,3400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,7080,3401),
 (10,14229,3402),
 (10,7081,3403),
@@ -54328,7 +54326,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,4059,3599),
 (10,14313,3600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,14314,3601),
 (10,5264,3602),
 (10,14315,3603),
@@ -54530,7 +54528,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,7262,3799),
 (10,14403,3800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,8078,3801),
 (10,3487,3802),
 (10,5164,3803),
@@ -54732,7 +54730,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,5177,3999),
 (10,7362,4000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,14498,4001),
 (10,5297,4002),
 (10,8087,4003),
@@ -54934,7 +54932,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,2720,4199),
 (10,2913,4200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,14585,4201),
 (10,14586,4202),
 (10,14587,4203),
@@ -55136,7 +55134,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,14679,4399),
 (10,839,4400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (10,14680,4401),
 (10,14681,4402),
 (10,7522,4403),
@@ -55161,7 +55159,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (10,14687,4422),
 (10,7531,4423);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,4911,1),
 (11,4320,2),
 (11,10387,3),
@@ -55363,7 +55361,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,14729,199),
 (11,6790,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,9448,201),
 (11,8849,202),
 (11,10912,203),
@@ -55565,7 +55563,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,6567,399),
 (11,6085,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,4623,401),
 (11,4346,402),
 (11,5842,403),
@@ -55767,7 +55765,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,2604,599),
 (11,9022,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,8930,601),
 (11,6593,602),
 (11,14797,603),
@@ -55969,7 +55967,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,4737,799),
 (11,3976,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,14849,801),
 (11,10817,802),
 (11,4327,803),
@@ -56171,7 +56169,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,14895,999),
 (11,8958,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,14896,1001),
 (11,4644,1002),
 (11,5904,1003),
@@ -56373,7 +56371,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,5590,1199),
 (11,14073,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,2508,1201),
 (11,2824,1202),
 (11,10218,1203),
@@ -56575,7 +56573,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,4924,1399),
 (11,6905,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,14982,1401),
 (11,12257,1402),
 (11,5072,1403),
@@ -56777,7 +56775,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,2489,1599),
 (11,10587,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,15012,1601),
 (11,14212,1602),
 (11,15013,1603),
@@ -56979,7 +56977,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,15058,1799),
 (11,2457,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,6060,1801),
 (11,7951,1802),
 (11,3981,1803),
@@ -57181,7 +57179,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,5196,1999),
 (11,6258,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,8722,2001),
 (11,15090,2002),
 (11,6083,2003),
@@ -57383,7 +57381,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,15121,2199),
 (11,5152,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,8503,2201),
 (11,2432,2202),
 (11,15122,2203),
@@ -57585,7 +57583,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,1807,2399),
 (11,2290,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,3438,2401),
 (11,6337,2402),
 (11,13975,2403),
@@ -57787,7 +57785,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,4069,2599),
 (11,3138,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,7334,2601),
 (11,2568,2602),
 (11,15195,2603),
@@ -57989,7 +57987,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,15232,2799),
 (11,4203,2800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,5432,2801),
 (11,1902,2802),
 (11,12909,2803),
@@ -58191,7 +58189,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,5550,2999),
 (11,11654,3000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,5464,3001),
 (11,9851,3002),
 (11,5786,3003),
@@ -58393,7 +58391,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,15307,3199),
 (11,2551,3200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (11,13005,3201),
 (11,6338,3202),
 (11,14306,3203),
@@ -58449,7 +58447,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (11,8227,3253),
 (11,6458,3254);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,15321,1),
 (12,15322,2),
 (12,15323,3),
@@ -58651,7 +58649,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,15430,199),
 (12,15431,200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,7202,201),
 (12,15432,202),
 (12,14348,203),
@@ -58853,7 +58851,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,13364,399),
 (12,15524,400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,15525,401),
 (12,5463,402),
 (12,14280,403),
@@ -59055,7 +59053,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,9264,599),
 (12,15603,600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,7791,601),
 (12,7921,602),
 (12,15604,603),
@@ -59257,7 +59255,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,7844,799),
 (12,15684,800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,11445,801),
 (12,15108,802),
 (12,15685,803),
@@ -59459,7 +59457,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,15770,999),
 (12,15771,1000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,12565,1001),
 (12,15772,1002),
 (12,7572,1003),
@@ -59661,7 +59659,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,8248,1199),
 (12,15859,1200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,1864,1201),
 (12,15860,1202),
 (12,15861,1203),
@@ -59863,7 +59861,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,15939,1399),
 (12,6966,1400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,15940,1401),
 (12,5644,1402),
 (12,2278,1403),
@@ -60065,7 +60063,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,16027,1599),
 (12,14048,1600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,16028,1601),
 (12,16029,1602),
 (12,16030,1603),
@@ -60267,7 +60265,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,2103,1799),
 (12,12926,1800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,16129,1801),
 (12,13026,1802),
 (12,13029,1803),
@@ -60469,7 +60467,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,16210,1999),
 (12,16211,2000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,5165,2001),
 (12,11847,2002),
 (12,14129,2003),
@@ -60671,7 +60669,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,5531,2199),
 (12,11312,2200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,16318,2201),
 (12,6739,2202),
 (12,16319,2203),
@@ -60873,7 +60871,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,16417,2399),
 (12,13178,2400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,8009,2401),
 (12,16418,2402),
 (12,14045,2403),
@@ -61075,7 +61073,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,16532,2599),
 (12,16533,2600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,16534,2601),
 (12,2267,2602),
 (12,16535,2603),
@@ -61277,7 +61275,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,7539,2799),
 (12,11012,2800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,16622,2801),
 (12,8892,2802),
 (12,16623,2803),
@@ -61479,7 +61477,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,9738,2999),
 (12,4559,3000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,12931,3001),
 (12,7246,3002),
 (12,5774,3003),
@@ -61681,7 +61679,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,16779,3199),
 (12,4972,3200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,8468,3201),
 (12,13290,3202),
 (12,15259,3203),
@@ -61883,7 +61881,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,8337,3399),
 (12,16857,3400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,6159,3401),
 (12,7480,3402),
 (12,16858,3403),
@@ -62085,7 +62083,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,6103,3599),
 (12,16948,3600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,16949,3601),
 (12,6100,3602),
 (12,6947,3603),
@@ -62287,7 +62285,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,8273,3799),
 (12,11215,3800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,10028,3801),
 (12,7823,3802),
 (12,10857,3803),
@@ -62489,7 +62487,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,17129,3999),
 (12,5943,4000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,17130,4001),
 (12,17131,4002),
 (12,6842,4003),
@@ -62691,7 +62689,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,10820,4199),
 (12,12595,4200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,17213,4201),
 (12,17214,4202),
 (12,17215,4203),
@@ -62893,7 +62891,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,17299,4399),
 (12,8995,4400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,6505,4401),
 (12,7727,4402),
 (12,14228,4403),
@@ -63095,7 +63093,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,13836,4599),
 (12,14271,4600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,15247,4601),
 (12,15271,4602),
 (12,17390,4603),
@@ -63297,7 +63295,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,4882,4799),
 (12,3954,4800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,17471,4801),
 (12,17472,4802),
 (12,5048,4803),
@@ -63499,7 +63497,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,17567,4999),
 (12,17568,5000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,12430,5001),
 (12,17569,5002),
 (12,17570,5003),
@@ -63701,7 +63699,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,17644,5199),
 (12,8536,5200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,7424,5201),
 (12,17645,5202),
 (12,17646,5203),
@@ -63903,7 +63901,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,17757,5399),
 (12,17758,5400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,17759,5401),
 (12,13141,5402),
 (12,17760,5403),
@@ -64105,7 +64103,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,4,5599),
 (12,17858,5600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,8182,5601),
 (12,13945,5602),
 (12,8920,5603),
@@ -64307,7 +64305,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,3454,5799),
 (12,6582,5800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,13299,5801),
 (12,5258,5802),
 (12,14293,5803),
@@ -64509,7 +64507,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,18022,5999),
 (12,18023,6000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,6713,6001),
 (12,18024,6002),
 (12,8335,6003),
@@ -64711,7 +64709,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,18087,6199),
 (12,11202,6200);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,10602,6201),
 (12,5015,6202),
 (12,5010,6203),
@@ -64913,7 +64911,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,8348,6399),
 (12,1978,6400);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,18162,6401),
 (12,18163,6402),
 (12,10453,6403),
@@ -65115,7 +65113,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,3609,6599),
 (12,6496,6600);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,18224,6601),
 (12,6423,6602),
 (12,14036,6603),
@@ -65317,7 +65315,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,4994,6799),
 (12,4685,6800);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,6329,6801),
 (12,5059,6802),
 (12,18313,6803),
@@ -65519,7 +65517,7 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,12948,6999),
 (12,14441,7000);
 
-INSERT INTO book_words(book_id, word_id, position) VALUES
+INSERT OR IGNORE INTO book_words(book_id, word_id, position) VALUES
 (12,18376,7001),
 (12,18377,7002),
 (12,8429,7003),
@@ -65719,5 +65717,3 @@ INSERT INTO book_words(book_id, word_id, position) VALUES
 (12,5219,7197),
 (12,18448,7198),
 (12,13280,7199);
-
-COMMIT;
