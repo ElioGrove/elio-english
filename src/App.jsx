@@ -52,7 +52,7 @@ function Login({ onSuccess }) {
 
   return (
     <main className="login-page">
-      <div className="login-brand"><Asterisk weight="light" /><span>晓林英语</span></div>
+      <div className="login-brand"><Asterisk weight="light" /><span>Elio 英语</span></div>
       <form className="login-form" onSubmit={submit}>
         <p className="eyebrow">PRIVATE READING ROOM</p>
         <h1>继续你的<br />词汇旅程。</h1>
@@ -74,7 +74,7 @@ function Login({ onSuccess }) {
 function SetupUnavailable() {
   return (
     <main className="login-page">
-      <div className="login-brand"><Asterisk weight="light" /><span>晓林英语</span></div>
+      <div className="login-brand"><Asterisk weight="light" /><span>Elio 英语</span></div>
       <div className="login-form">
         <p className="eyebrow">DEPLOYMENT READY</p>
         <h1>站点已部署，<br />等待安全配置。</h1>
@@ -106,7 +106,7 @@ function AppHeader({ books, currentBook, onBookChange, word, search, setSearch, 
   const percentage = Math.min(100, (progress / total) * 100);
   return (
     <header className="app-header">
-      <div className="wordmark"><BookOpen weight="regular" /><span>晓林<span className="wordmark-secondary">英语</span></span><small>ENGLISH, EVERY DAY</small></div>
+      <div className="wordmark"><BookOpen weight="regular" /><span>Elio<span className="wordmark-secondary">英语</span></span><small>ENGLISH, EVERY DAY</small></div>
       <label className="book-picker">
         <BookOpen weight="light" />
         <span>当前词书：</span>
@@ -462,7 +462,7 @@ export function App() {
 
   useEffect(() => { checkSession(); }, []);
 
-  if (state === "loading") return <div className="loading-screen"><Asterisk /><span>正在打开晓林英语</span></div>;
+  if (state === "loading") return <div className="loading-screen"><Asterisk /><span>正在打开Elio 英语</span></div>;
   if (state === "setup") return <SetupUnavailable />;
   if (state === "login") return <Login onSuccess={() => setState("app")} />;
   return <StudyApp demoMode={demoMode} onUnauthorized={() => setState("login")} />;
