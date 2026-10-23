@@ -90,12 +90,12 @@ function StatusSelector({ value, onChange, disabled = false }) {
     <div className="status-wrap">
       <div className="status-selector" aria-label="掌握程度">
         {Object.entries(STATUS_META).map(([status, meta]) => (
-          <button key={status} type="button" className={`status-option ${status} ${value === status ? "active" : ""}`} onClick={() => onChange(status)} disabled={disabled}>
+          <button key={status} type="button" aria-pressed={value === status} className={`status-option ${status} ${value === status ? "active" : ""}`} onClick={() => onChange(status)} disabled={disabled}>
             {meta.label}
           </button>
         ))}
       </div>
-      <p>选择状态将帮助我们安排后续学习</p>
+      <p>标记掌握程度，按自己的节奏学习</p>
     </div>
   );
 }
@@ -106,7 +106,7 @@ function AppHeader({ books, currentBook, onBookChange, word, search, setSearch, 
   const percentage = Math.min(100, (progress / total) * 100);
   return (
     <header className="app-header">
-      <div className="wordmark"><Asterisk weight="light" /><span>晓林英语</span></div>
+      <div className="wordmark"><BookOpen weight="regular" /><span>晓林<span className="wordmark-secondary">英语</span></span><small>ENGLISH, EVERY DAY</small></div>
       <label className="book-picker">
         <BookOpen weight="light" />
         <span>当前词书：</span>
@@ -156,7 +156,8 @@ function StudyContent({ word, content, contentLoading, onSpeak }) {
   };
   return (
     <>
-      <div className="word-kicker">第 {word.position || 1} 个单词</div>
+      <section className="word-card">
+      <div className="word-kicker">单词精读 <span>第 {word.position || 1} 个单词</span></div>
       <div className="word-title-row">
         <div>
           <h1>{word.headword}</h1>
@@ -175,6 +176,7 @@ function StudyContent({ word, content, contentLoading, onSpeak }) {
         <span>使用场景：{safe.frequency?.note || "正在分析"}</span>
         {contentLoading && <span className="generating"><SpinnerGap className="spin" /> 千问正在生成</span>}
       </div>
+      </section>
 
       <section className="content-section examples-section">
         <h2>例句</h2>
@@ -218,7 +220,6 @@ function StudyContent({ word, content, contentLoading, onSpeak }) {
         <div className="memory-panel">
           <h2>记忆提示</h2>
           <p>{safe.memoryTips?.[0]}</p>
-          <img src="/assets/resilient-spring-memory.png" alt="弹簧回弹的记忆联想" />
         </div>
       </section>
     </>
@@ -229,7 +230,7 @@ function Sidebar({ dashboard, review, onReviewPick }) {
   const counts = dashboard.counts;
   const planPercent = Math.min(100, (dashboard.today / dashboard.dailyGoal) * 100);
   return (
-    <aside className="sidebar">
+    <aside className="sidebar" aria-label="学习概览">
       <section>
         <div className="aside-heading"><h2>学习轨迹</h2><Info /></div>
         <div className="stat-list">

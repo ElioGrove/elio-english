@@ -10,7 +10,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 ## Product decisions
 
-- The selected visual direction is ideation option 2: a warm, editorial, desktop-first immersive reading column with a slim right learning-queue rail.
+- The visual direction follows the user's speed-test screenshot (2026-10-23): cool light-gray canvas, flat white rounded cards, generous whitespace, neutral sans-serif typography, near-black primary actions, and restrained blue/orange accents. Retain the vocabulary study column and learning-queue rail while applying this shared card language across desktop, mobile, login, and settings.
+- Reuse the existing React and Phosphor components; keep component source editable in the repo, centralize design tokens, and avoid duplicate UI/icon dependencies.
 - The primary action is studying one word deeply, then assigning 已学会 / 学习中 / 未学习.
 - “学习中” is a dedicated manual-review library, not a spaced-repetition score.
 - Vocabulary books are ordered from foundational school English through GRE-level vocabulary.
