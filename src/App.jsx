@@ -17,19 +17,16 @@ import {
   WarningCircle,
   X,
 } from "@phosphor-icons/react";
-import { api, ApiError } from "./api";
-import { demoBooks, demoContent, demoReview, demoWord } from "./demoData";
+import { api } from "./api";
+import { demoReview } from "./demoData";
+import { useStudy } from "./useStudy";
+import { speakEnglish } from "./speech";
 
 const STATUS_META = {
   mastered: { label: "已学会", icon: Check },
   learning: { label: "学习中", icon: Circle },
   unlearned: { label: "未学习", icon: X },
 };
-
-function normalizeWord(word) {
-  if (!word) return demoWord;
-  return { ...word, aiContent: word.aiContent || null };
-}
 
 function Login({ onSuccess }) {
   const [password, setPassword] = useState("");
@@ -100,7 +97,7 @@ function StatusSelector({ value, onChange, disabled = false }) {
   );
 }
 
-function AppHeader({ books, currentBook, onBookChange, word, search, setSearch, searchResults, onSearchPick, onSettings }) {
+function AppHeader({ books, currentBook, onBookChange, word, search, setSearch, searchResults, searchState, onSearchPick, onSettings }) {
   const progress = Math.max(1, word?.position || 1);
   const total = word?.book?.wordCount || currentBook?.word_count || 1;
   const percentage = Math.min(100, (progress / total) * 100);
@@ -124,8 +121,9 @@ function AppHeader({ books, currentBook, onBookChange, word, search, setSearch, 
           <MagnifyingGlass />
           <input aria-label="搜索单词或释义" placeholder="搜索单词或释义" value={search} onChange={(event) => setSearch(event.target.value)} />
           <kbd>⌘ K</kbd>
-          {searchResults.length > 0 && (
+          {search.trim() && (
             <div className="search-results">
+              {searchState && <p role="status">{searchState}</p>}
               {searchResults.map((result) => (
                 <button key={result.id} type="button" onClick={() => onSearchPick(result)}>
                   <span>{result.headword}</span><small>{result.source_meaning || "查看单词"}</small>
@@ -142,17 +140,17 @@ function AppHeader({ books, currentBook, onBookChange, word, search, setSearch, 
 
 function StudyContent({ word, content, contentLoading, onSpeak }) {
   const safe = content || {
-    phonetic: word.phonetic || "音标生成中",
+    phonetic: word.phonetic || (contentLoading ? "音标生成中" : "暂无音标"),
     partOfSpeech: word.partOfSpeech || "",
-    coreMeaning: word.meaning || "AI 正在整理这个单词的核心含义",
+    coreMeaning: word.meaning || "暂无基础释义",
     scenarios: [],
-    frequency: { level: "生成中", note: "千问正在分析常见使用场景" },
+    frequency: { level: contentLoading ? "生成中" : "待补充", note: contentLoading ? "千问正在分析常见使用场景" : "AI 内容暂未生成，可重试" },
     examples: [],
     bestPractices: [],
-    roots: { breakdown: "正在分析词源与构词", meaning: "生成完成后显示" },
+    roots: { breakdown: contentLoading ? "正在分析词源与构词" : "暂无词源分析", meaning: "生成完成后显示" },
     wordFamily: [],
     collocations: [],
-    memoryTips: ["正在为这个单词准备有针对性的记忆联想。"],
+    memoryTips: [contentLoading ? "正在为这个单词准备有针对性的记忆联想。" : "可以先学习基础释义，稍后再生成记忆提示。"],
   };
   return (
     <>
@@ -163,7 +161,7 @@ function StudyContent({ word, content, contentLoading, onSpeak }) {
           <h1>{word.headword}</h1>
           <div className="pronunciation">
             <span>{safe.phonetic}</span>
-            <button type="button" onClick={onSpeak} aria-label={`朗读 ${word.headword}`}><SpeakerHigh /></button>
+            <button type="button" onClick={() => onSpeak(word.headword)} aria-label={`朗读 ${word.headword}`}><SpeakerHigh /></button>
             <span>{safe.partOfSpeech}</span>
           </div>
         </div>
@@ -226,7 +224,7 @@ function StudyContent({ word, content, contentLoading, onSpeak }) {
   );
 }
 
-function Sidebar({ dashboard, review, onReviewPick }) {
+function Sidebar({ dashboard, review, onReviewPick, onReviewAll }) {
   const counts = dashboard.counts;
   const planPercent = Math.min(100, (dashboard.today / dashboard.dailyGoal) * 100);
   return (
@@ -240,7 +238,7 @@ function Sidebar({ dashboard, review, onReviewPick }) {
         </div>
       </section>
       <section className="review-section">
-        <div className="aside-heading"><h2>学习中队列 <span>({counts.learning})</span></h2><button type="button">查看全部 <ArrowRight /></button></div>
+        <div className="aside-heading"><h2>学习中队列 <span>({counts.learning})</span></h2><button type="button" onClick={onReviewAll}>查看全部 <ArrowRight /></button></div>
         <div className="review-list">
           {review.length === 0 ? <p className="empty-review">还没有学习中的单词</p> : review.slice(0, 5).map((item, index) => (
             <button key={item.id} type="button" onClick={() => onReviewPick(item)}>
@@ -262,12 +260,61 @@ function Sidebar({ dashboard, review, onReviewPick }) {
   );
 }
 
-function SettingsModal({ model, demoMode, onClose, onLogout }) {
+function useModal(onClose) {
+  const close = useRef(onClose);
+  close.current = onClose;
+  useEffect(() => {
+    const previous = document.activeElement;
+    const dialog = document.querySelector('[role="dialog"]');
+    dialog?.querySelector("button")?.focus();
+    function keydown(event) {
+      if (event.key === "Escape") close.current();
+      if (event.key !== "Tab" || !dialog) return;
+      const items = [...dialog.querySelectorAll('button:not(:disabled), input, select, [tabindex="0"]')];
+      const first = items[0], last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    }
+    document.addEventListener("keydown", keydown);
+    return () => { document.removeEventListener("keydown", keydown); previous?.focus(); };
+  }, []);
+}
+
+function ReviewModal({ demoMode, onUnauthorized, onClose, onPick }) {
+  useModal(onClose);
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    const controller = new AbortController();
+    setLoading(true);
+    setError("");
+    (demoMode ? Promise.resolve({ words: demoReview, total: demoReview.length }) : api(`/api/review?limit=20&offset=${page * 20}`, { signal: controller.signal }))
+      .then((data) => { if (!controller.signal.aborted) { setItems(data.words); setTotal(data.total); } })
+      .catch((caught) => { if (!controller.signal.aborted) { if (caught.status === 401) onUnauthorized(); else setError(caught.message); } })
+      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
+    return () => controller.abort();
+  }, [page, demoMode, attempt]);
+  return <div className="modal-backdrop" onMouseDown={onClose}>
+    <section className="settings-modal review-modal" role="dialog" aria-modal="true" aria-labelledby="review-title" onMouseDown={(event) => event.stopPropagation()}>
+      <div className="modal-heading"><h2 id="review-title">学习中词库（{total}）</h2><button type="button" onClick={onClose} aria-label="关闭词库"><X /></button></div>
+      {error ? <p role="alert">{error} <button type="button" onClick={() => setAttempt((value) => value + 1)}>重试</button></p> : loading ? <p role="status">正在加载…</p> : <div className="review-list">{items.length ? items.map((item) => <button type="button" key={item.id} onClick={() => onPick(item)}><strong>{item.headword}</strong><span>{item.source_meaning}</span></button>) : <p>还没有学习中的单词。</p>}</div>}
+      <div className="review-pagination"><button type="button" disabled={loading || page === 0} onClick={() => setPage(page - 1)}>上一页</button><span>{page + 1} / {Math.max(1, Math.ceil(total / 20))}</span><button type="button" disabled={loading || (page + 1) * 20 >= total} onClick={() => setPage(page + 1)}>下一页</button></div>
+    </section>
+  </div>;
+}
+
+function SettingsModal({ model, configuredModel, demoMode, onClose, onLogout }) {
+  useModal(onClose);
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
       <section className="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-title" onMouseDown={(event) => event.stopPropagation()}>
         <div className="modal-heading"><div><p className="eyebrow">PERSONAL SETTINGS</p><h2 id="settings-title">学习设置</h2></div><button type="button" onClick={onClose} aria-label="关闭设置"><X /></button></div>
-        <div className="settings-row"><span>内容生成模型</span><strong>{model || "qwen3.8-max"}</strong></div>
+        <div className="settings-row"><span>内容生成模型</span><strong>{configuredModel}</strong></div>
+        {model && model !== configuredModel && <p className="settings-note">当前卡片使用历史缓存（{model}），可在学习页重新生成。</p>}
         <div className="settings-row"><span>运行模式</span><strong>{demoMode ? "本地演示" : "Cloudflare"}</strong></div>
         <p className="settings-note">模型 API Key 与访问密码仅保存在 Cloudflare Secret，不会进入浏览器或 Git。</p>
         {!demoMode && <button className="logout-button" type="button" onClick={onLogout}><SignOut />退出登录</button>}
@@ -276,138 +323,51 @@ function SettingsModal({ model, demoMode, onClose, onLogout }) {
   );
 }
 
-function StudyApp({ demoMode, onUnauthorized }) {
-  const [books, setBooks] = useState(demoBooks);
-  const [selectedBookSlug, setSelectedBookSlug] = useState(demoMode ? "high-school" : "foundation");
-  const [word, setWord] = useState(demoWord);
-  const [content, setContent] = useState(demoContent);
-  const [review, setReview] = useState(demoReview);
-  const [dashboard, setDashboard] = useState({ counts: { mastered: 57, learning: 23, unlearned: 2260 }, today: 12, dailyGoal: 20 });
-  const [contentLoading, setContentLoading] = useState(false);
-  const [moving, setMoving] = useState(false);
+function StudyApp({ demoMode, configuredModel, onUnauthorized }) {
+  const { books, word, selectedBookSlug, dashboard, review, moving, contentLoading, contentError, error, completed, history, loadWord, markStatus, setError, retryContent } = useStudy(demoMode, onUnauthorized);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [reviewOpen, setReviewOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const searchTimer = useRef(null);
-
+  const [searchState, setSearchState] = useState("");
   const currentBook = useMemo(() => books.find((book) => book.slug === selectedBookSlug) || books[0], [books, selectedBookSlug]);
 
-  async function refreshPanels() {
-    if (demoMode) return;
-    try {
-      const [dashboardData, reviewData] = await Promise.all([api("/api/dashboard"), api("/api/review?limit=10")]);
-      setDashboard(dashboardData);
-      setReview(reviewData.words);
-    } catch (caught) {
-      if (caught instanceof ApiError && caught.status === 401) onUnauthorized();
-    }
-  }
-
-  async function generateContent(nextWord) {
-    if (demoMode || nextWord.aiContent) return;
-    setContentLoading(true);
-    try {
-      const generated = await api(`/api/words/${nextWord.id}/generate`, { method: "POST", body: "{}" });
-      setContent(generated.content);
-      setWord((current) => ({ ...current, aiContent: generated.content, aiModel: generated.model }));
-    } catch (caught) {
-      console.error(caught);
-    } finally {
-      setContentLoading(false);
-    }
-  }
-
-  async function loadWord({ bookSlug = selectedBookSlug, after = 0, id = 0 } = {}) {
-    if (demoMode) {
-      setSelectedBookSlug(bookSlug);
-      setWord(demoWord);
-      setContent(demoContent);
-      return;
-    }
-    setMoving(true);
-    try {
-      const params = new URLSearchParams({ book: bookSlug });
-      if (after) params.set("after", String(after));
-      if (id) params.set("id", String(id));
-      const data = await api(`/api/study/next?${params}`);
-      const nextWord = normalizeWord(data.word);
-      setSelectedBookSlug(bookSlug);
-      setWord(nextWord);
-      setContent(nextWord.aiContent);
-      await generateContent(nextWord);
-    } catch (caught) {
-      if (caught instanceof ApiError && caught.status === 401) onUnauthorized();
-    } finally {
-      setMoving(false);
-    }
-  }
-
   useEffect(() => {
-    if (demoMode) return;
-    Promise.all([api("/api/books"), api("/api/dashboard"), api("/api/review?limit=10")])
-      .then(([bookData, dashboardData, reviewData]) => {
-        setBooks(bookData.books);
-        setDashboard(dashboardData);
-        setReview(reviewData.words);
-        return loadWord({ bookSlug: "foundation" });
-      })
-      .catch((caught) => {
-        if (caught instanceof ApiError && caught.status === 401) onUnauthorized();
-      });
-  }, [demoMode]);
-
-  useEffect(() => {
-    window.clearTimeout(searchTimer.current);
-    if (!search.trim()) {
-      setSearchResults([]);
-      return;
-    }
-    searchTimer.current = window.setTimeout(async () => {
-      if (demoMode) {
-        setSearchResults(demoReview.filter((item) => item.headword.includes(search.toLowerCase())));
-        return;
-      }
+    const controller = new AbortController();
+    setSearchResults([]);
+    setSearchState(search.trim() ? "正在搜索…" : "");
+    if (!search.trim()) return;
+    const timer = window.setTimeout(async () => {
       try {
-        const data = await api(`/api/search?q=${encodeURIComponent(search.trim())}`);
-        setSearchResults(data.words);
-      } catch {
-        setSearchResults([]);
+        const words = demoMode ? demoReview.filter((item) => item.headword.includes(search.trim().toLowerCase()) || item.source_meaning?.includes(search.trim()))
+          : (await api(`/api/search?q=${encodeURIComponent(search.trim())}`, { signal: controller.signal })).words;
+        if (!controller.signal.aborted) { setSearchResults(words); setSearchState(words.length ? "" : "没有找到匹配的单词"); }
+      } catch (caught) {
+        if (controller.signal.aborted) return;
+        if (caught.status === 401) onUnauthorized();
+        else setSearchState(caught.message);
       }
     }, 220);
-    return () => window.clearTimeout(searchTimer.current);
+    return () => { clearTimeout(timer); controller.abort(); };
   }, [search, demoMode]);
 
-  async function markStatus(status) {
-    if (moving) return;
-    setWord((current) => ({ ...current, status }));
-    if (demoMode) {
-      if (status === "learning" && !review.some((item) => item.id === word.id)) setReview((current) => [word, ...current]);
-      return;
-    }
-    setMoving(true);
-    try {
-      await api("/api/progress", { method: "POST", body: JSON.stringify({ wordId: word.id, status }) });
-      await Promise.all([refreshPanels(), loadWord({ after: word.id })]);
-    } finally {
-      setMoving(false);
-    }
-  }
+  useEffect(() => {
+    const shortcut = (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); document.querySelector('input[aria-label="搜索单词或释义"]')?.focus(); }
+      if (event.key === "Escape") setSearch("");
+    };
+    window.addEventListener("keydown", shortcut);
+    return () => { window.removeEventListener("keydown", shortcut); window.speechSynthesis?.cancel(); };
+  }, []);
+  useEffect(() => { window.speechSynthesis?.cancel(); }, [word?.id]);
 
-  function speak(text = word.headword) {
-    if (!("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
-    utterance.rate = 0.88;
-    window.speechSynthesis.speak(utterance);
-  }
-
+  function speak(text) { speakEnglish(text, setError); }
   async function logout() {
-    await api("/api/auth/logout", { method: "POST", body: "{}" });
-    window.location.reload();
+    try { await api("/api/auth/logout", { method: "POST", body: "{}" }); onUnauthorized(); }
+    catch (caught) { setSettingsOpen(false); setError(caught.message); }
   }
 
-  const activeContent = content || word.aiContent;
+  const activeContent = word?.aiContent;
   return (
     <div className="app-shell">
       <AppHeader
@@ -418,25 +378,32 @@ function StudyApp({ demoMode, onUnauthorized }) {
         search={search}
         setSearch={setSearch}
         searchResults={searchResults}
+        searchState={searchState}
         onSearchPick={(result) => { setSearch(""); setSearchResults([]); loadWord({ bookSlug: result.book_slug || selectedBookSlug, id: result.id }); }}
         onSettings={() => setSettingsOpen(true)}
       />
       <div className="workspace">
         <main className="study-pane">
-          <div className="study-top">
+          {demoMode && <p className="notice">演示预览 · 进度不会保存到云端</p>}
+          {error && <div className="notice error-notice" role="alert">{error}<button type="button" onClick={() => loadWord()}>重新加载</button></div>}
+          {completed ? <section className="empty-state"><Check /><h1>本词书暂无未学习单词</h1><p>可以选择另一本词书，或回到学习中队列继续复习。</p></section> : !word ? <section className="empty-state" role="status">{moving ? "正在加载单词…" : "暂时无法加载单词，请重试"}</section> : <>
+          <div className="study-top" aria-busy={moving}>
             <StudyContent word={word} content={activeContent} contentLoading={contentLoading} onSpeak={speak} />
+            {contentError && <div className="notice error-notice" role="alert">{contentError}<button type="button" onClick={retryContent}>重试生成</button></div>}
+            {!contentLoading && !contentError && activeContent && <button className="regenerate-button" type="button" onClick={retryContent}>重新生成学习卡片</button>}
             <div className="desktop-status"><StatusSelector value={word.status} onChange={markStatus} disabled={moving} /></div>
           </div>
           <footer className="study-footer">
-            <button type="button" className="footer-button"><ArrowLeft /> 上一个</button>
-            <button type="button" className="footer-button"><ListBullets /> 继续阅读</button>
+            <button type="button" className="footer-button" disabled={moving || !history.length} onClick={() => loadWord({ ...history[history.length - 1], back: true })}><ArrowLeft /> 上一个</button>
             <button type="button" className="next-button" onClick={() => loadWord({ after: word.id })} disabled={moving}>{moving ? <SpinnerGap className="spin" /> : <>下一个 <ArrowRight /></>}</button>
           </footer>
+          </>}
         </main>
-        <Sidebar dashboard={dashboard} review={review} onReviewPick={(item) => loadWord({ bookSlug: item.book_slug || selectedBookSlug, id: item.id })} />
+        <Sidebar onReviewAll={() => setReviewOpen(true)} dashboard={dashboard} review={review} onReviewPick={(item) => loadWord({ bookSlug: item.book_slug || selectedBookSlug, id: item.id })} />
       </div>
-      <div className="mobile-status"><StatusSelector value={word.status} onChange={markStatus} disabled={moving} /></div>
-      {settingsOpen && <SettingsModal model={word.aiModel} demoMode={demoMode} onClose={() => setSettingsOpen(false)} onLogout={logout} />}
+      {word && !completed && <div className="mobile-status"><StatusSelector value={word.status} onChange={markStatus} disabled={moving} /></div>}
+      {reviewOpen && <ReviewModal demoMode={demoMode} onUnauthorized={onUnauthorized} onClose={() => setReviewOpen(false)} onPick={(item) => { setReviewOpen(false); loadWord({ bookSlug: item.book_slug || selectedBookSlug, id: item.id }); }} />}
+      {settingsOpen && <SettingsModal configuredModel={configuredModel} model={word?.aiModel} demoMode={demoMode} onClose={() => setSettingsOpen(false)} onLogout={logout} />}
     </div>
   );
 }
@@ -444,18 +411,20 @@ function StudyApp({ demoMode, onUnauthorized }) {
 export function App() {
   const [state, setState] = useState("loading");
   const [demoMode, setDemoMode] = useState(false);
+  const [configuredModel, setConfiguredModel] = useState("qwen3.8-flash");
 
   async function checkSession() {
     setState("loading");
     try {
       const session = await api("/api/session");
+      setConfiguredModel(session.model || "qwen3.8-flash");
       setState(session.authenticated ? "app" : "login");
-    } catch {
+    } catch (caught) {
       if (import.meta.env.DEV) {
         setDemoMode(true);
         setState("app");
       } else {
-        setState("setup");
+        setState(caught.status === 503 ? "setup" : "error");
       }
     }
   }
@@ -463,7 +432,8 @@ export function App() {
   useEffect(() => { checkSession(); }, []);
 
   if (state === "loading") return <div className="loading-screen"><Asterisk /><span>正在打开Elio 英语</span></div>;
+  if (state === "error") return <main className="empty-state"><h1>暂时无法连接</h1><p>请检查网络后重试。</p><button type="button" onClick={checkSession}>重新连接</button></main>;
   if (state === "setup") return <SetupUnavailable />;
   if (state === "login") return <Login onSuccess={() => setState("app")} />;
-  return <StudyApp demoMode={demoMode} onUnauthorized={() => setState("login")} />;
+  return <StudyApp configuredModel={configuredModel} demoMode={demoMode} onUnauthorized={() => setState("login")} />;
 }

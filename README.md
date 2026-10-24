@@ -8,8 +8,10 @@
 - 三种学习状态：未学习、学习中、已学会
 - 「学习中」专属复习词库
 - 密码登录与 30 天签名会话，用于识别唯一使用者并保存进度
-- 词书切换、单词搜索、发音、下一个单词、进度统计
-- 千问 `qwen3.8-max` 按需生成学习内容，并缓存到 D1，避免重复调用
+- 词书切换、中英文单词搜索、英语语音朗读、前后导航、进度统计与本机学习位置恢复
+- 学习中词库分页、词书完成提示、请求超时和生成失败重试
+- AI 内容生成独立于切词，延迟结果不会覆盖当前单词
+- 千问 `qwen3.8-flash` 按需生成学习内容，并缓存到 D1，避免重复调用
 - 登录限流、写请求 Origin 校验、HttpOnly/Secure/SameSite Cookie
 - 桌面与移动端响应式界面
 
@@ -30,11 +32,13 @@
 
 ## 本地开发
 
-要求 Node.js 20 或更高版本。
+要求 Node.js 24 或更高版本（回归测试使用 Node 内置 TypeScript 与 SQLite 支持）。
 
 ```bash
 npm install
 cp .dev.vars.example .dev.vars
+# 填写 .dev.vars 中的本地密码、会话密钥与百炼 API Key
+npm run build:cloudflare
 npm run db:migrate:local
 npm run db:seed:local
 npm run dev:worker
@@ -85,7 +89,7 @@ npx wrangler secret put DASHSCOPE_API_KEY
 https://dashscope.aliyuncs.com/compatible-mode/v1
 ```
 
-当前配置适用于中国内地的百炼通用 API Key。生产环境也可以按照[阿里云百炼地域与接入域名文档](https://help.aliyun.com/zh/model-studio/regions/)改用北京地域的 Workspace 专属域名。模型默认使用 `qwen3.8-max`。
+当前配置适用于中国内地的百炼通用 API Key。生产环境也可以按照[阿里云百炼地域与接入域名文档](https://help.aliyun.com/zh/model-studio/regions/)改用北京地域的 Workspace 专属域名。模型默认使用 `qwen3.8-flash`，关闭深度思考。已有卡片继续读取历史缓存，可点击「重新生成学习卡片」使用新模型刷新。AI 上游请求限制为 45 秒，失败不会阻塞继续学习。
 
 ## GitHub Actions
 
@@ -109,8 +113,10 @@ node scripts/build-vocabulary-migration.mjs /path/to/kajweb-dict
 ## 验证
 
 ```bash
+npm run build
 npm run check
-npm run build:cloudflare
 ```
+
+测试覆盖登录与限流、状态保存、未学习统计、复习分页、中英文搜索、AI 缓存及异常响应、语音文本与请求超时。今日统计以 UTC+8 零点为界，只计入标记为「学习中 / 已学会」的不同单词。
 
 安全模型与运维建议见 [SECURITY.md](./SECURITY.md)。

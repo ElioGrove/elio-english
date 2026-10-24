@@ -29,8 +29,8 @@ jobs:
 
       - name: Check types and build
         run: |
-          npx tsc --noEmit
-          npm run build:cloudflare
+          npm run build
+          npm run check
 
       - name: Apply D1 migrations
         run: npx wrangler d1 migrations apply xiaolin-english --remote

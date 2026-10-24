@@ -19,7 +19,7 @@
     }
   ],
   "vars": {
-    "QWEN_MODEL": "qwen3.8-max",
+    "QWEN_MODEL": "qwen3.8-flash",
     "DASHSCOPE_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
     "DAILY_GOAL": "20"
   },

@@ -194,3 +194,17 @@ button svg { width: 18px; height: 18px; flex-shrink: 0; }
   .login-form h1 { font-size: 36px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+
+.notice { margin: 12px 24px; padding: 12px 16px; border-radius: 10px; background: var(--paper); font-size: 13px; line-height: 1.6; }
+.error-notice { background: #fff3e8; color: #873c12; }
+.notice button, .regenerate-button { border: 0; background: transparent; text-decoration: underline; font-size: 12px; padding: 6px; }
+.regenerate-button { margin: 8px 24px; color: var(--muted); }
+.empty-state { padding: 64px 24px; text-align: center; line-height: 1.8; }
+.empty-state h1 { font-size: 26px; }
+.search-results p { padding: 10px; font-size: 12px; }
+.study-footer .next-button { margin-left: auto; }
+.review-modal { max-height: 80dvh; overflow-y: auto; }
+.review-modal .review-list button { grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr); gap: 12px; padding: 12px 4px; }
+.review-modal .review-list span { font-size: 12px; overflow-wrap: anywhere; }
+.review-pagination { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; font-size: 12px; gap: 12px; }
+.review-pagination button { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--paper); }

@@ -80,12 +80,36 @@ function parseStatus(value: unknown): StudyStatus | null {
   return value === "mastered" || value === "learning" || value === "unlearned" ? value : null;
 }
 
+async function readBoundedJson(stream: ReadableStream<Uint8Array> | null, maximum: number): Promise<unknown> {
+  if (!stream) throw new Error("invalid_json");
+  const reader = stream.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maximum) { await reader.cancel(); throw new Error("request_too_large"); }
+      chunks.push(value);
+    }
+  } finally { reader.releaseLock(); }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+  return JSON.parse(new TextDecoder().decode(bytes)) as unknown;
+}
+
 async function readJsonObject(request: Request): Promise<Record<string, unknown>> {
-  const size = Number(request.headers.get("content-length") || "0");
-  if (size > 32_768) throw new Error("request_too_large");
-  const value: unknown = await request.json();
+  const value = await readBoundedJson(request.body, 32_768);
   if (!isObject(value)) throw new Error("invalid_json");
   return value;
+}
+
+function positiveInteger(value: string | null, fallback = 0): number {
+  if (value === null) return fallback;
+  const number = Number(value);
+  return Number.isSafeInteger(number) && number >= 0 ? number : fallback;
 }
 
 function parseCookies(request: Request): Map<string, string> {
@@ -261,7 +285,7 @@ async function getBooks(env: Cloudflare.Env): Promise<Response> {
 function parseAiContent(content: string | null): unknown {
   if (!content) return null;
   try {
-    return JSON.parse(content) as unknown;
+    return validateAiContent(JSON.parse(content) as unknown);
   } catch {
     return null;
   }
@@ -285,8 +309,8 @@ function serializeWord(row: WordRow): Record<string, unknown> {
 
 async function getStudyWord(url: URL, env: Cloudflare.Env): Promise<Response> {
   const bookSlug = (url.searchParams.get("book") || "foundation").slice(0, 64);
-  const after = Number(url.searchParams.get("after") || "0");
-  const requestedId = Number(url.searchParams.get("id") || "0");
+  const after = positiveInteger(url.searchParams.get("after"));
+  const requestedId = positiveInteger(url.searchParams.get("id"));
   let row: WordRow | null = null;
 
   if (requestedId > 0) {
@@ -341,7 +365,7 @@ async function getStudyWord(url: URL, env: Cloudflare.Env): Promise<Response> {
     }
   }
 
-  if (!row) return apiError("这本词书已经全部完成", 404);
+  if (!row) return apiError(requestedId > 0 ? "当前词书中没有这个单词" : "这本词书暂无未学习单词", 404);
   return json({ word: serializeWord(row) });
 }
 
@@ -353,7 +377,7 @@ async function updateProgress(request: Request, env: Cloudflare.Env): Promise<Re
   } catch {
     return apiError("进度数据无效");
   }
-  const wordId = typeof body.wordId === "number" ? Math.trunc(body.wordId) : 0;
+  const wordId = typeof body.wordId === "number" && Number.isSafeInteger(body.wordId) ? body.wordId : 0;
   const status = parseStatus(body.status);
   if (wordId < 1 || !status) return apiError("进度数据无效");
 
@@ -375,7 +399,7 @@ async function updateProgress(request: Request, env: Cloudflare.Env): Promise<Re
   return json({ ok: true, wordId, status });
 }
 
-async function getReviewQueue(env: Cloudflare.Env, limit: number): Promise<Response> {
+async function getReviewQueue(env: Cloudflare.Env, limit: number, offset: number): Promise<Response> {
   const result = await env.DB.prepare(
     `SELECT w.id, w.headword, w.source_phonetic, w.source_pos, w.source_meaning,
        p.last_studied_at, p.review_count,
@@ -384,10 +408,11 @@ async function getReviewQueue(env: Cloudflare.Env, limit: number): Promise<Respo
      FROM progress p
      JOIN words w ON w.id = p.word_id
      WHERE p.status = 'learning'
-     ORDER BY p.last_studied_at ASC
-     LIMIT ?`,
-  ).bind(Math.min(Math.max(limit, 1), 50)).all<ReviewRow>();
-  return json({ words: result.results });
+     ORDER BY p.last_studied_at ASC, w.id ASC
+     LIMIT ? OFFSET ?`,
+  ).bind(Math.min(Math.max(limit, 1), 50), offset).all<ReviewRow>();
+  const total = await env.DB.prepare("SELECT COUNT(*) AS count FROM progress WHERE status = 'learning'").first<number>("count") ?? 0;
+  return json({ words: result.results, total });
 }
 
 async function getDashboard(env: Cloudflare.Env): Promise<Response> {
@@ -395,17 +420,21 @@ async function getDashboard(env: Cloudflare.Env): Promise<Response> {
     `SELECT
        COALESCE(SUM(CASE WHEN status = 'mastered' THEN 1 ELSE 0 END), 0) AS mastered,
        COALESCE(SUM(CASE WHEN status = 'learning' THEN 1 ELSE 0 END), 0) AS learning,
-       (SELECT COUNT(*) FROM words) - COUNT(*) AS unlearned
+       (SELECT COUNT(*) FROM words) - COALESCE(SUM(CASE WHEN status IN ('mastered', 'learning') THEN 1 ELSE 0 END), 0) AS unlearned
      FROM progress`,
   ).first<{ mastered: number; learning: number; unlearned: number }>();
   const today = await env.DB.prepare(
-    "SELECT COUNT(DISTINCT word_id) AS count FROM study_events WHERE studied_at >= date('now')",
+    "SELECT COUNT(DISTINCT word_id) AS count FROM study_events WHERE status != 'unlearned' AND studied_at >= datetime(date('now', '+8 hours'), '-8 hours')",
   ).first<number>("count") ?? 0;
   return json({
     counts: counts ?? { mastered: 0, learning: 0, unlearned: 0 },
     today,
-    dailyGoal: Number(env.DAILY_GOAL) || 20,
+    dailyGoal: Math.min(1000, Math.max(1, positiveInteger(env.DAILY_GOAL, 20))),
   });
+}
+
+function escapeLike(value: string): string {
+  return value.replaceAll("\\", "\\\\").replaceAll("%", "\\%").replaceAll("_", "\\_");
 }
 
 async function searchWords(url: URL, env: Cloudflare.Env): Promise<Response> {
@@ -418,10 +447,10 @@ async function searchWords(url: URL, env: Cloudflare.Env): Promise<Response> {
         WHERE bw.word_id = w.id ORDER BY b.difficulty LIMIT 1) AS book_slug
      FROM words w
      LEFT JOIN progress p ON p.word_id = w.id
-     WHERE w.normalized LIKE ? ESCAPE '\\'
+     WHERE (w.normalized LIKE ? ESCAPE '\\' OR w.source_meaning LIKE ? ESCAPE '\\')
      ORDER BY CASE WHEN w.normalized = ? THEN 0 ELSE 1 END, length(w.normalized), w.normalized
      LIMIT 12`,
-  ).bind(`${query.replaceAll("%", "\\%").replaceAll("_", "\\_")}%`, query).all<{
+  ).bind(`${escapeLike(query)}%`, `%${escapeLike(query)}%`, query).all<{
     id: number;
     headword: string;
     source_phonetic: string | null;
@@ -449,6 +478,12 @@ function validateAiContent(value: unknown): Record<string, unknown> {
   if (!isObject(value.roots) || !isString(value.roots.breakdown) || !isString(value.roots.meaning)) {
     throw new Error("ai_missing_roots");
   }
+  for (const key of ["scenarios", "memoryTips"]) {
+    if (!(value[key] as unknown[]).every(isString)) throw new Error(`ai_invalid_${key}`);
+  }
+  for (const [key, fields] of Object.entries({ examples: ["en", "zh"], bestPractices: ["type", "en", "zh"], wordFamily: ["word", "zh"], collocations: ["phrase", "zh"] })) {
+    if (!(value[key] as unknown[]).every((item) => isObject(item) && fields.every((field) => isString(item[field])))) throw new Error(`ai_invalid_${key}`);
+  }
   return value;
 }
 
@@ -466,8 +501,9 @@ async function generateWordContent(wordId: number, force: boolean, env: Cloudfla
     generated_at: string | null;
   }>();
   if (!word) return apiError("单词不存在", 404);
-  if (word.ai_content && !force) {
-    return json({ content: parseAiContent(word.ai_content), model: word.ai_model, generatedAt: word.generated_at, cached: true });
+  const cached = parseAiContent(word.ai_content);
+  if (cached && !force) {
+    return json({ content: cached, model: word.ai_model, generatedAt: word.generated_at, cached: true });
   }
 
   const systemPrompt = `你是一位严谨、风趣、擅长为中文母语成年人建立英语词汇记忆网络的资深英语教师。
@@ -491,34 +527,45 @@ examples 恰好 2 条，bestPractices 恰好 2 条，wordFamily 2-5 条，colloc
   const userPrompt = `请为单词“${word.headword}”生成学习内容。参考信息：音标 ${word.source_phonetic || "未知"}；词性 ${word.source_pos || "未知"}；中文义 ${word.source_meaning || "未知"}。请按 json 格式输出。`;
 
   const endpoint = `${env.DASHSCOPE_BASE_URL.replace(/\/$/, "")}/chat/completions`;
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${env.DASHSCOPE_API_KEY}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      model: env.QWEN_MODEL,
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt },
-      ],
-      response_format: { type: "json_object" },
-      enable_thinking: true,
-      thinking_budget: 2048,
-      max_completion_tokens: 4096,
-      temperature: 0.25,
-      stream: false,
-    }),
-  });
+  let response: Response;
+  let payload: unknown;
+  try {
+    response = await fetch(endpoint, {
+      signal: AbortSignal.timeout(45000),
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${env.DASHSCOPE_API_KEY}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        model: env.QWEN_MODEL,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt },
+        ],
+        response_format: { type: "json_object" },
+        enable_thinking: false,
+        max_completion_tokens: 4096,
+        temperature: 0.25,
+        stream: false,
+      }),
+    });
 
-  if (!response.ok) {
-    console.error(JSON.stringify({ message: "qwen request failed", status: response.status, wordId }));
-    return apiError("AI 内容生成暂时失败，请稍后重试", 502);
+    if (!response.ok) {
+      console.error(JSON.stringify({ message: "qwen request failed", status: response.status, wordId }));
+      const message = response.status === 401 || response.status === 403
+        ? "千问访问凭据无效或无权限，请管理员检查 API Key 与地域配置"
+        : response.status === 429 ? "千问请求额度或频率受限，请稍后重试"
+        : "AI 内容生成暂时失败，请稍后重试";
+      return apiError(message, 502);
+    }
+    const length = Number(response.headers.get("content-length") || "0");
+    if (length > 2_000_000) return apiError("AI 返回内容过大", 502);
+    payload = await readBoundedJson(response.body, 2_000_000);
+  } catch (error) {
+    const timeout = error instanceof Error && ["TimeoutError", "AbortError"].includes(error.name);
+    return apiError(timeout ? "AI 生成超时，请重试" : "AI 服务连接失败，请重试", timeout ? 504 : 502);
   }
-  const length = Number(response.headers.get("content-length") || "0");
-  if (length > 2_000_000) return apiError("AI 返回内容过大", 502);
-  const payload: unknown = await response.json();
   const qwen = isObject(payload) ? payload as QwenResponse : {};
   const rawContent = qwen.choices?.[0]?.message?.content;
   if (!isString(rawContent)) return apiError("AI 未返回有效内容", 502);
@@ -552,13 +599,13 @@ async function handleApi(request: Request, env: Cloudflare.Env): Promise<Respons
   if (url.pathname === "/api/auth/logout" && method === "POST") return logoutResponse(request);
 
   const authenticated = await verifySession(parseCookies(request).get(SESSION_COOKIE), env.SESSION_SECRET);
-  if (url.pathname === "/api/session" && method === "GET") return json({ authenticated });
+  if (url.pathname === "/api/session" && method === "GET") return json({ authenticated, model: env.QWEN_MODEL });
   if (!authenticated) return apiError("请先输入访问密码", 401);
 
   if (url.pathname === "/api/books" && method === "GET") return getBooks(env);
   if (url.pathname === "/api/dashboard" && method === "GET") return getDashboard(env);
   if (url.pathname === "/api/study/next" && method === "GET") return getStudyWord(url, env);
-  if (url.pathname === "/api/review" && method === "GET") return getReviewQueue(env, Number(url.searchParams.get("limit") || "10"));
+  if (url.pathname === "/api/review" && method === "GET") return getReviewQueue(env, positiveInteger(url.searchParams.get("limit"), 10), positiveInteger(url.searchParams.get("offset")));
   if (url.pathname === "/api/search" && method === "GET") return searchWords(url, env);
   if (url.pathname === "/api/progress" && method === "POST") return updateProgress(request, env);
 
@@ -571,9 +618,11 @@ async function handleApi(request: Request, env: Cloudflare.Env): Promise<Respons
       const body = await readJsonObject(request);
       force = body.force === true;
     } catch {
-      force = false;
+      return apiError("生成参数无效");
     }
-    return generateWordContent(Number(generateMatch[1]), force, env);
+    const wordId = Number(generateMatch[1]);
+    if (!Number.isSafeInteger(wordId) || wordId < 1) return apiError("单词编号无效");
+    return generateWordContent(wordId, force, env);
   }
 
   return apiError("接口不存在", 404);

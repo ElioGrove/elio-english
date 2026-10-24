@@ -8,7 +8,7 @@
     "dev:worker": "wrangler dev",
     "build": "vite build && node scripts/prepare-sites-build.mjs",
     "build:cloudflare": "vite build",
-    "check": "tsc --noEmit && npm run test:sites",
+    "check": "tsc --noEmit && npm run test:app && npm run test:sites",
     "cf:types": "wrangler types",
     "db:migrate:local": "wrangler d1 migrations apply xiaolin-english --local",
     "db:seed:local": "wrangler d1 execute xiaolin-english --local --file data/vocabulary.sql",
@@ -16,7 +16,8 @@
     "db:seed:remote": "wrangler d1 execute xiaolin-english --remote --file data/vocabulary.sql",
     "deploy": "npm run build:cloudflare && wrangler deploy",
     "preview": "vite preview",
-    "test:sites": "node --test tests/sites-worker.test.mjs"
+    "test:sites": "node --test tests/sites-worker.test.mjs",
+    "test:app": "node --test tests/client.test.mjs tests/cloudflare.test.mjs"
   },
   "dependencies": {
     "@fontsource/instrument-serif": "5.2.7",

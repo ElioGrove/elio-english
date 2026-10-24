@@ -16,3 +16,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - “学习中” is a dedicated manual-review library, not a spaced-repetition score.
 - Vocabulary books are ordered from foundational school English through GRE-level vocabulary.
 - Cloudflare Workers + D1 is the production runtime; the bundled Sites worker remains intact only for prototype compatibility.
+
+- Use `qwen3.8-flash` for new vocabulary content (2026-10-24); AI generation must not block word navigation or status controls.

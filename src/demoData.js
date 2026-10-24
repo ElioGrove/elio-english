@@ -56,7 +56,7 @@ export const demoWord = {
   position: 128,
   book: { slug: "high-school", title: "高中核心", wordCount: 3665 },
   aiContent: demoContent,
-  aiModel: "qwen3.8-max",
+  aiModel: "qwen3.8-flash",
 };
 
 export const demoReview = [
